@@ -1,0 +1,8 @@
+labs\bgp-peering-prefix\build
+labs\bgp-ibgp\build
+labs\ospf-adjacence\build
+labs\ospf-shortestpath\build
+labs\bgp-local-pref\build
+labs\fast-reroute-tilfa-sr-mpls\build
+labs\bgp-role\build
+labs\static-ip\build
