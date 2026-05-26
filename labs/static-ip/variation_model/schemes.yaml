@@ -1,0 +1,30 @@
+# addressing_schemes:
+#   scheme_10:
+#     lan_left: 10.0.1.0/24
+#     transit: 10.0.12.0/30
+#     lan_right: 10.0.2.0/24
+#     subnets:
+#       h1_lan: 10.0.1.0/24
+#       r1_r2: 10.0.12.0/30
+#       h2_lan: 10.0.2.0/24
+#   scheme_192:
+#     lan_left: 192.168.1.0/24
+#     transit: 192.168.12.0/30
+#     lan_right: 192.168.2.0/24
+#     subnets:
+#       h1_lan: 192.168.1.0/24
+#       r1_r2: 192.168.12.0/30
+#       h2_lan: 192.168.2.0/24
+
+addressing_schemes:
+  scheme_10:
+    subnets:
+      h1_lan: 10.0.1.0/24
+      r1_r2: 10.0.12.0/30
+      h2_lan: 10.0.2.0/24
+
+  scheme_192:
+    subnets:
+      h1_lan: 192.168.1.0/24
+      r1_r2: 192.168.12.0/30
+      h2_lan: 192.168.2.0/24

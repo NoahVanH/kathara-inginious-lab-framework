@@ -1,0 +1,155 @@
+labs_path: ../create_lab.py
+convergence_time: 15
+default_image: kathara/base
+structure: lab.conf
+
+lab_inline: |
+  r1[0]="A"
+  r2[0]="A"
+  r5[0]="B"
+  r3[0]="B"
+  r6[0]="C"
+  r4[0]="C"
+  r2[1]="D"
+  r3[1]="D"
+  r2[2]="E"
+  r4[1]="E"
+  r3[2]="F"
+  r4[2]="F"
+
+test:
+  requiring_startup:
+    - r1
+    - r2
+    - r3
+    - r4
+    - r5
+    - r6
+
+  ip_mapping:
+    r1:
+      lo: {{ expected.r1.interfaces.lo.cidr }}
+      eth0: {{ expected.r1.interfaces.eth0.cidr }}
+
+    r2:
+      lo: {{ expected.r2.interfaces.lo.cidr }}
+      eth0: {{ expected.r2.interfaces.eth0.cidr }}
+      eth1: {{ expected.r2.interfaces.eth1.cidr }}
+      eth2: {{ expected.r2.interfaces.eth2.cidr }}
+
+    r3:
+      lo: {{ expected.r3.interfaces.lo.cidr }}
+      eth0: {{ expected.r3.interfaces.eth0.cidr }}
+      eth1: {{ expected.r3.interfaces.eth1.cidr }}
+      eth2: {{ expected.r3.interfaces.eth2.cidr }}
+
+    r4:
+      lo: {{ expected.r4.interfaces.lo.cidr }}
+      eth0: {{ expected.r4.interfaces.eth0.cidr }}
+      eth1: {{ expected.r4.interfaces.eth1.cidr }}
+      eth2: {{ expected.r4.interfaces.eth2.cidr }}
+
+    r5:
+      lo: {{ expected.r5.interfaces.lo.cidr }}
+      eth0: {{ expected.r5.interfaces.eth0.cidr }}
+
+    r6:
+      lo: {{ expected.r6.interfaces.lo.cidr }}
+      eth0: {{ expected.r6.interfaces.eth0.cidr }}
+
+  daemons:
+    r1:
+      - bgpd
+    r2:
+      - bgpd
+    r3:
+      - bgpd
+    r4:
+      - bgpd
+    r5:
+      - bgpd
+    r6:
+      - bgpd
+
+  protocols:
+    bgpd:
+      networks:
+        r1:
+          - {{ expected.r1.interfaces.lo.cidr }}
+        r2:
+          - {{ expected.r2.interfaces.lo.cidr }}
+        r3:
+          - {{ expected.r3.interfaces.lo.cidr }}
+        r4:
+          - {{ expected.r4.interfaces.lo.cidr }}
+        r5:
+          - {{ expected.r5.interfaces.lo.cidr }}
+        r6:
+          - {{ expected.r6.interfaces.lo.cidr }}
+
+  custom_commands:
+    r1:
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r2.interfaces.eth0.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r2.interfaces.eth0.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+    r2:
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r1.interfaces.eth0.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r1.interfaces.eth0.cidr.split("/")[0] }}\s+4\s+2(\s|$)'
+
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r3.interfaces.lo.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r3.interfaces.lo.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r4.interfaces.lo.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r4.interfaces.lo.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+    r3:
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r5.interfaces.eth0.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r5.interfaces.eth0.cidr.split("/")[0] }}\s+4\s+3(\s|$)'
+
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r2.interfaces.lo.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r2.interfaces.lo.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r4.interfaces.lo.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r4.interfaces.lo.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+    r4:
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r6.interfaces.eth0.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r6.interfaces.eth0.cidr.split("/")[0] }}\s+4\s+4(\s|$)'
+
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r2.interfaces.lo.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r2.interfaces.lo.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r3.interfaces.lo.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r3.interfaces.lo.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+    r5:
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r3.interfaces.eth0.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r3.interfaces.eth0.cidr.split("/")[0] }}\s+4\s+1(\s|$)'
+
+    r6:
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r4.interfaces.eth0.cidr.split("/")[0] }}'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '{{ expected.r4.interfaces.eth0.cidr.split("/")[0] }}\s+4\s+1(\s|$)'

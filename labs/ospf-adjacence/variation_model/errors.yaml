@@ -1,0 +1,41 @@
+errors:
+
+  # passe par eth1 pour rejoindre r4 au lieu de eth0
+
+  r4_eth0_down:
+    node: r4
+    kind: interface_down
+    interface: eth0
+  
+  r3_eth0_passive:
+    node: r3
+    kind: eth_passive
+    interface: eth0
+
+  r5_eth0_passive:
+    node: r5
+    kind: eth_passive
+    interface: eth0
+
+  r1_wrong_router_id:
+    node: r1
+    kind: wrong_router_id
+    new_router_id: 2.2.2.2 
+
+  r1_eth0_wrong_mtu:
+    kind: wrong_mtu
+    node: r1
+    interface: eth0
+    new_mtu: 1440
+
+  r2_eth0_wrong_mtu:
+    kind: wrong_mtu
+    node: r2
+    interface: eth0
+    new_mtu: 1440
+
+  r5_eth0_wrong_mtu:
+    kind: wrong_mtu
+    node: r5
+    interface: eth0
+    new_mtu: 1460

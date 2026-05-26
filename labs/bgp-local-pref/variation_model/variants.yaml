@@ -1,0 +1,537 @@
+variants:
+- id: 0
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_provider_too_high_as2_to_as1
+- id: 1
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 2
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_provider_routes_to_peer_as4
+- id: 3
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_all_to_peer_as3
+- id: 4
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as4
+- id: 5
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 6
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as1
+- id: 7
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 8
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_provider_routes_to_peer_as4
+- id: 9
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_all_to_peer_as3
+- id: 10
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as4
+- id: 11
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_route_map_direction_as2_to_as4
+- id: 12
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as1
+- id: 13
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_provider_routes_to_peer_as4
+- id: 14
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_all_to_peer_as3
+- id: 15
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as4
+- id: 16
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - wrong_route_map_direction_as2_to_as4
+- id: 17
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as1
+- id: 18
+  scheme: scheme_db8_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - export_all_to_peer_as3
+- id: 19
+  scheme: scheme_db8_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as4
+- id: 20
+  scheme: scheme_db8_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 21
+  scheme: scheme_db8_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as1
+- id: 22
+  scheme: scheme_db8_a
+  errors: [export_all_to_peer_as3, missing_route_map_as4]
+- id: 23
+  scheme: scheme_db8_a
+  errors:
+  - export_all_to_peer_as3
+  - wrong_route_map_direction_as2_to_as4
+- id: 24
+  scheme: scheme_db8_a
+  errors: [export_all_to_peer_as3, missing_route_map_as1]
+- id: 25
+  scheme: scheme_db8_a
+  errors:
+  - missing_route_map_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 26
+  scheme: scheme_db8_a
+  errors: [missing_route_map_as4, missing_route_map_as1]
+- id: 27
+  scheme: scheme_db8_a
+  errors:
+  - wrong_route_map_direction_as2_to_as4
+  - missing_route_map_as1
+- id: 28
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_provider_too_high_as2_to_as1
+- id: 29
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 30
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_provider_routes_to_peer_as4
+- id: 31
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_all_to_peer_as3
+- id: 32
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as4
+- id: 33
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 34
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as1
+- id: 35
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 36
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_provider_routes_to_peer_as4
+- id: 37
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_all_to_peer_as3
+- id: 38
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as4
+- id: 39
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_route_map_direction_as2_to_as4
+- id: 40
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as1
+- id: 41
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_provider_routes_to_peer_as4
+- id: 42
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_all_to_peer_as3
+- id: 43
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as4
+- id: 44
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - wrong_route_map_direction_as2_to_as4
+- id: 45
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as1
+- id: 46
+  scheme: scheme_db8_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - export_all_to_peer_as3
+- id: 47
+  scheme: scheme_db8_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as4
+- id: 48
+  scheme: scheme_db8_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 49
+  scheme: scheme_db8_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as1
+- id: 50
+  scheme: scheme_db8_b
+  errors: [export_all_to_peer_as3, missing_route_map_as4]
+- id: 51
+  scheme: scheme_db8_b
+  errors:
+  - export_all_to_peer_as3
+  - wrong_route_map_direction_as2_to_as4
+- id: 52
+  scheme: scheme_db8_b
+  errors: [export_all_to_peer_as3, missing_route_map_as1]
+- id: 53
+  scheme: scheme_db8_b
+  errors:
+  - missing_route_map_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 54
+  scheme: scheme_db8_b
+  errors: [missing_route_map_as4, missing_route_map_as1]
+- id: 55
+  scheme: scheme_db8_b
+  errors:
+  - wrong_route_map_direction_as2_to_as4
+  - missing_route_map_as1
+- id: 56
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_provider_too_high_as2_to_as1
+- id: 57
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 58
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_provider_routes_to_peer_as4
+- id: 59
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_all_to_peer_as3
+- id: 60
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as4
+- id: 61
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 62
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as1
+- id: 63
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 64
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_provider_routes_to_peer_as4
+- id: 65
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_all_to_peer_as3
+- id: 66
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as4
+- id: 67
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_route_map_direction_as2_to_as4
+- id: 68
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as1
+- id: 69
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_provider_routes_to_peer_as4
+- id: 70
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_all_to_peer_as3
+- id: 71
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as4
+- id: 72
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - wrong_route_map_direction_as2_to_as4
+- id: 73
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as1
+- id: 74
+  scheme: scheme_3fff_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - export_all_to_peer_as3
+- id: 75
+  scheme: scheme_3fff_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as4
+- id: 76
+  scheme: scheme_3fff_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 77
+  scheme: scheme_3fff_a
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as1
+- id: 78
+  scheme: scheme_3fff_a
+  errors: [export_all_to_peer_as3, missing_route_map_as4]
+- id: 79
+  scheme: scheme_3fff_a
+  errors:
+  - export_all_to_peer_as3
+  - wrong_route_map_direction_as2_to_as4
+- id: 80
+  scheme: scheme_3fff_a
+  errors: [export_all_to_peer_as3, missing_route_map_as1]
+- id: 81
+  scheme: scheme_3fff_a
+  errors:
+  - missing_route_map_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 82
+  scheme: scheme_3fff_a
+  errors: [missing_route_map_as4, missing_route_map_as1]
+- id: 83
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_route_map_direction_as2_to_as4
+  - missing_route_map_as1
+- id: 84
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_provider_too_high_as2_to_as1
+- id: 85
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 86
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_provider_routes_to_peer_as4
+- id: 87
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - export_all_to_peer_as3
+- id: 88
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as4
+- id: 89
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 90
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as4
+  - missing_route_map_as1
+- id: 91
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_local_pref_customer_too_low_as4_to_as7
+- id: 92
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_provider_routes_to_peer_as4
+- id: 93
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - export_all_to_peer_as3
+- id: 94
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as4
+- id: 95
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - wrong_route_map_direction_as2_to_as4
+- id: 96
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_provider_too_high_as2_to_as1
+  - missing_route_map_as1
+- id: 97
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_provider_routes_to_peer_as4
+- id: 98
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - export_all_to_peer_as3
+- id: 99
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as4
+- id: 100
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - wrong_route_map_direction_as2_to_as4
+- id: 101
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as4_to_as7
+  - missing_route_map_as1
+- id: 102
+  scheme: scheme_3fff_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - export_all_to_peer_as3
+- id: 103
+  scheme: scheme_3fff_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as4
+- id: 104
+  scheme: scheme_3fff_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 105
+  scheme: scheme_3fff_b
+  errors:
+  - export_provider_routes_to_peer_as4
+  - missing_route_map_as1
+- id: 106
+  scheme: scheme_3fff_b
+  errors: [export_all_to_peer_as3, missing_route_map_as4]
+- id: 107
+  scheme: scheme_3fff_b
+  errors:
+  - export_all_to_peer_as3
+  - wrong_route_map_direction_as2_to_as4
+- id: 108
+  scheme: scheme_3fff_b
+  errors: [export_all_to_peer_as3, missing_route_map_as1]
+- id: 109
+  scheme: scheme_3fff_b
+  errors:
+  - missing_route_map_as4
+  - wrong_route_map_direction_as2_to_as4
+- id: 110
+  scheme: scheme_3fff_b
+  errors: [missing_route_map_as4, missing_route_map_as1]
+- id: 111
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_route_map_direction_as2_to_as4
+  - missing_route_map_as1

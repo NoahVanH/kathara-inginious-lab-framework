@@ -1,0 +1,577 @@
+variants:
+- id: 0
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 1
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 2
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 3
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 4
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 5
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 6
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 7
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 8
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 9
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 10
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 11
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 12
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 13
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 14
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 15
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 16
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 17
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 18
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 19
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 20
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 21
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 22
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 23
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 24
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 25
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 26
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 27
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 28
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 29
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 30
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 31
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 32
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 33
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 34
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 35
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 36
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 37
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 38
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 39
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 40
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 41
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 42
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 43
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 44
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 45
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 46
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 47
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 48
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 49
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 50
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 51
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 52
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 53
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 54
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 55
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 56
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 57
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 58
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 59
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 60
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 61
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 62
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 63
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 64
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 65
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 66
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 67
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 68
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 69
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 70
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 71
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 72
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 73
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 74
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 75
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 76
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 77
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 78
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 79
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 80
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 81
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 82
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 83
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 84
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 85
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 86
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 87
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 88
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 89
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 90
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 91
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 92
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 93
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 94
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 95
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 96
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 97
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 98
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 99
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 100
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 101
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 102
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 103
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 104
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 105
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 106
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 107
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 108
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 109
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 110
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 111
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 112
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 113
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 114
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 115
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 116
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 117
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 118
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 119
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 120
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 121
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 122
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 123
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 124
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r4]
+- id: 125
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 126
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 127
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 128
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 129
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r5]
+- id: 130
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 131
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r6, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r5]
+- id: 132
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 133
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r6, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r6]
+- id: 134
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 135
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 136
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r2, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r5]
+- id: 137
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r3, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 138
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r6]
+- id: 139
+  scheme: scheme_db8_b
+  errors: [sr_disabled_r3, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]
+- id: 140
+  scheme: scheme_3fff_b
+  errors: [sr_disabled_r2, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r1_eth0,
+    tilfa_no_node_protection_r4]
+- id: 141
+  scheme: scheme_db8_a
+  errors: [sr_disabled_r6, sr_wrong_index_r3_dup_r1, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 142
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r3, sr_wrong_index_r8_dup_r4, tilfa_iface_disabled_r7_eth1,
+    tilfa_no_node_protection_r4]
+- id: 143
+  scheme: scheme_3fff_a
+  errors: [sr_disabled_r2, sr_wrong_index_r4_out_of_srgb, tilfa_iface_disabled_r3_eth0,
+    tilfa_no_node_protection_r6]

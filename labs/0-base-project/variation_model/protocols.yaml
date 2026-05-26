@@ -1,0 +1,239 @@
+# This file defines the network protocols and their configurations for the lab.
+
+
+protocols:
+  as1_r1:
+    template: router_ospf6_bgp
+    ospf6:
+      router_id: 1.1.1.1
+      interfaces:
+        lo:
+          area: 0.0.0.0
+        eth1:
+          area: 0.0.0.0
+          cost: 7
+        eth2:
+          area: 0.0.0.0
+    bgp:
+      local_as: 1
+      router_id: 1.1.1.1
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as3_r8
+          neighbor_interface: eth0
+          remote_as: 3
+      ibgp_neighbors:
+        - neighbor_node: as1_r4
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r5
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r6
+          update_source: lo
+          activate: true
+          next_hop_self: true
+
+  as4_r2:
+    template: router_ospf6_bgp
+    ospf6:
+      router_id: 2.2.2.2
+      interfaces:
+        lo:
+          area: 0.0.0.0
+        eth2:
+          area: 0.0.0.0
+    bgp:
+      local_as: 4
+      router_id: 2.2.2.2
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as1_r5
+          neighbor_interface: eth0
+          remote_as: 1
+        - local_interface: eth1
+          neighbor_node: as2_d1
+          neighbor_interface: eth1
+          remote_as: 2
+      ibgp_neighbors:
+        - neighbor_node: as4_r3
+          update_source: lo
+          activate: true
+          next_hop_self: true
+
+  as4_r3:
+    template: router_ospf6_bgp
+    ospf6:
+      router_id: 3.3.3.3
+      interfaces:
+        lo:
+          area: 0.0.0.0
+        eth1:
+          area: 0.0.0.0
+    bgp:
+      local_as: 4
+      router_id: 3.3.3.3
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as1_r4
+          neighbor_interface: eth0
+          remote_as: 1
+      ibgp_neighbors:
+        - neighbor_node: as4_r2
+          update_source: lo
+          activate: true
+          next_hop_self: true
+
+  as1_r4:
+    template: router_ospf6_bgp
+    ospf6:
+      router_id: 4.4.4.4
+      interfaces:
+        lo:
+          area: 0.0.0.0
+        eth1:
+          area: 0.0.0.0
+        eth2:
+          area: 0.0.0.0
+    bgp:
+      local_as: 1
+      router_id: 4.4.4.4
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as4_r3
+          neighbor_interface: eth0
+          remote_as: 4
+      ibgp_neighbors:
+        - neighbor_node: as1_r1
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r5
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r6
+          update_source: lo
+          activate: true
+          next_hop_self: true
+
+  as1_r5:
+    template: router_ospf6_bgp
+    ospf6:
+      router_id: 5.5.5.5
+      interfaces:
+        lo:
+          area: 0.0.0.0
+        eth1:
+          area: 0.0.0.0
+        eth2:
+          area: 0.0.0.0
+    bgp:
+      local_as: 1
+      router_id: 5.5.5.5
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as4_r2
+          neighbor_interface: eth0
+          remote_as: 4
+      ibgp_neighbors:
+        - neighbor_node: as1_r1
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r4
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r6
+          update_source: lo
+          activate: true
+          next_hop_self: true
+
+  as1_r6:
+    template: router_ospf6_bgp
+    ospf6:
+      router_id: 6.6.6.6
+      interfaces:
+        lo:
+          area: 0.0.0.0
+        eth0:
+          area: 0.0.0.0
+        eth1:
+          area: 0.0.0.0
+    bgp:
+      local_as: 1
+      router_id: 6.6.6.6
+      network_interfaces: [lo]
+      ebgp_neighbors: []
+      ibgp_neighbors:
+        - neighbor_node: as1_r1
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r4
+          update_source: lo
+          activate: true
+          next_hop_self: true
+        - neighbor_node: as1_r5
+          update_source: lo
+          activate: true
+          next_hop_self: true
+
+  as3_r8:
+    template: router_bgp_only
+    bgp:
+      local_as: 3
+      router_id: 8.8.8.8
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as1_r1
+          neighbor_interface: eth0
+          remote_as: 1
+        - local_interface: eth1
+          neighbor_node: as5_r9
+          neighbor_interface: eth0
+          remote_as: 5
+      ibgp_neighbors: []
+
+  as5_r9:
+    template: router_bgp_only
+    bgp:
+      local_as: 5
+      router_id: 9.9.9.9
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as3_r8
+          neighbor_interface: eth1
+          remote_as: 3
+        - local_interface: eth1
+          neighbor_node: as2_d1
+          neighbor_interface: eth0
+          remote_as: 2
+      ibgp_neighbors: []
+
+  as2_d1:
+    template: router_bgp_only
+    bgp:
+      local_as: 2
+      router_id: 10.10.10.10
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as5_r9
+          neighbor_interface: eth1
+          remote_as: 5
+        - local_interface: eth1
+          neighbor_node: as4_r2
+          neighbor_interface: eth1
+          remote_as: 4
+      ibgp_neighbors: []

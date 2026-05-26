@@ -1,0 +1,217 @@
+variants:
+- id: 0
+  scheme: scheme_3fff_b
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 1
+  scheme: scheme_3fff_a
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 2
+  scheme: scheme_3fff_b
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 3
+  scheme: scheme_3fff_a
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 4
+  scheme: scheme_3fff_b
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 5
+  scheme: scheme_3fff_b
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 6
+  scheme: scheme_3fff_a
+  errors: [r2_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 7
+  scheme: scheme_3fff_a
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 8
+  scheme: scheme_db8_b
+  errors: [r2_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 9
+  scheme: scheme_3fff_a
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 10
+  scheme: scheme_db8_a
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 11
+  scheme: scheme_db8_b
+  errors: [r5_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 12
+  scheme: scheme_db8_a
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 13
+  scheme: scheme_db8_b
+  errors: [r1_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 14
+  scheme: scheme_db8_a
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 15
+  scheme: scheme_db8_a
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 16
+  scheme: scheme_db8_a
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 17
+  scheme: scheme_3fff_a
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 18
+  scheme: scheme_3fff_b
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 19
+  scheme: scheme_3fff_a
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 20
+  scheme: scheme_db8_a
+  errors: [r1_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 21
+  scheme: scheme_db8_b
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 22
+  scheme: scheme_3fff_a
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 23
+  scheme: scheme_db8_a
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 24
+  scheme: scheme_3fff_a
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 25
+  scheme: scheme_db8_a
+  errors: [r5_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 26
+  scheme: scheme_db8_b
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 27
+  scheme: scheme_3fff_a
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 28
+  scheme: scheme_db8_b
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 29
+  scheme: scheme_3fff_a
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 30
+  scheme: scheme_db8_a
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 31
+  scheme: scheme_3fff_b
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 32
+  scheme: scheme_db8_b
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 33
+  scheme: scheme_db8_b
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 34
+  scheme: scheme_db8_b
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 35
+  scheme: scheme_db8_b
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 36
+  scheme: scheme_db8_a
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 37
+  scheme: scheme_db8_a
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 38
+  scheme: scheme_3fff_a
+  errors: [r5_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 39
+  scheme: scheme_3fff_b
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 40
+  scheme: scheme_3fff_a
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 41
+  scheme: scheme_db8_a
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 42
+  scheme: scheme_3fff_b
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 43
+  scheme: scheme_3fff_b
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r3_eth0_passive]
+- id: 44
+  scheme: scheme_db8_b
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 45
+  scheme: scheme_db8_b
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 46
+  scheme: scheme_db8_b
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 47
+  scheme: scheme_3fff_b
+  errors: [r1_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 48
+  scheme: scheme_3fff_b
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 49
+  scheme: scheme_db8_b
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 50
+  scheme: scheme_db8_a
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 51
+  scheme: scheme_db8_b
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 52
+  scheme: scheme_3fff_b
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 53
+  scheme: scheme_db8_b
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 54
+  scheme: scheme_3fff_a
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 55
+  scheme: scheme_db8_a
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 56
+  scheme: scheme_db8_a
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r5_eth0_passive]
+- id: 57
+  scheme: scheme_db8_a
+  errors: [r2_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 58
+  scheme: scheme_3fff_b
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 59
+  scheme: scheme_db8_b
+  errors: [r1_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 60
+  scheme: scheme_db8_a
+  errors: [r2_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 61
+  scheme: scheme_3fff_a
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 62
+  scheme: scheme_db8_a
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 63
+  scheme: scheme_3fff_a
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 64
+  scheme: scheme_3fff_a
+  errors: [r5_eth0_wrong_mtu, r3_eth0_passive, r1_wrong_router_id]
+- id: 65
+  scheme: scheme_3fff_b
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 66
+  scheme: scheme_3fff_b
+  errors: [r5_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 67
+  scheme: scheme_3fff_b
+  errors: [r1_eth0_wrong_mtu, r4_eth0_down, r1_wrong_router_id]
+- id: 68
+  scheme: scheme_3fff_b
+  errors: [r5_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]
+- id: 69
+  scheme: scheme_3fff_a
+  errors: [r1_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 70
+  scheme: scheme_3fff_b
+  errors: [r2_eth0_wrong_mtu, r5_eth0_passive, r1_wrong_router_id]
+- id: 71
+  scheme: scheme_db8_b
+  errors: [r2_eth0_wrong_mtu, r4_eth0_down, r5_eth0_passive]

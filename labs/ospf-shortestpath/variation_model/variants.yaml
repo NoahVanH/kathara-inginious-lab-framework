@@ -1,0 +1,121 @@
+variants:
+- id: 0
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 1
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r4_eth1]
+- id: 2
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r1_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 3
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 4
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r1_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 5
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 6
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 7
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r1_eth1]
+- id: 8
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 9
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r1_eth1]
+- id: 10
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 11
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 12
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 13
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 14
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r4_eth1]
+- id: 15
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 16
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 17
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 18
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r1_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 19
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 20
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 21
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 22
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r3_eth1]
+- id: 23
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r1_eth1]
+- id: 24
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r3_eth1]
+- id: 25
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r1_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 26
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r4_eth1]
+- id: 27
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 28
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 29
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r3_eth1]
+- id: 30
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 31
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 32
+  scheme: scheme_3fff_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r3_eth1]
+- id: 33
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth1, wrong_cost_r4_eth1, wrong_cost_r3_eth1]
+- id: 34
+  scheme: scheme_3fff_b
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 35
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r1_eth1]
+- id: 36
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r3_eth1]
+- id: 37
+  scheme: scheme_db8_a
+  errors: [wrong_cost_r2_eth1, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 38
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r1_eth1, wrong_cost_r4_eth1]
+- id: 39
+  scheme: scheme_db8_b
+  errors: [wrong_cost_r2_eth0, wrong_cost_r2_eth1, wrong_cost_r4_eth1]

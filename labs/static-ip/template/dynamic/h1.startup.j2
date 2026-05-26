@@ -1,0 +1,5 @@
+{% for iface, data in node.interfaces.items() %}
+ip link set dev {{ iface }}{% if data.up %} up{% else %} down{% endif %}
+ip addr add {{ data.cidr }} dev {{ iface }}
+{% endfor %}
+ip route add default via {{ node.default_route }}

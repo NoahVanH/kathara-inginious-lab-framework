@@ -1,0 +1,17 @@
+#!/bin/bash
+
+{% for iface, data in node.interfaces.items() %}
+ip link set dev {{ iface }}{% if data.up %} up{% else %} down{% endif %}
+ip -6 addr add {{ data.cidr }} dev {{ iface }}
+{% endfor %}
+
+
+
+{% if node.default_route %}
+ip -6 route add default via {{ node.default_route }}
+{% endif %}
+
+{% for route in node.static_routes %}
+ip -6 route add {{ route.to }} via {{ route.via }}
+{% endfor %}
+systemctl start frr

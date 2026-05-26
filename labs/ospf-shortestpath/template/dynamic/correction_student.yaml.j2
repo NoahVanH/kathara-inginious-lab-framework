@@ -1,0 +1,101 @@
+labs_path: ../create_lab.py
+convergence_time: 60
+default_image: kathara/frr
+structure: lab.conf
+
+lab_inline: |
+  LAB_NAME="ospf_single_area_lab"
+  LAB_AUTHOR="Noah Van Horenbeke"
+
+  r1[ipv6]="true"
+  r1[0]="A"
+  r1[1]="C"
+  r1[image]="kathara/frr"
+
+  r2[ipv6]="true"
+  r2[0]="A"
+  r2[1]="D"
+  r2[image]="kathara/frr"
+
+  r3[ipv6]="true"
+  r3[0]="A"
+  r3[1]="B"
+  r3[image]="kathara/frr"
+
+  r4[ipv6]="true"
+  r4[0]="B"
+  r4[1]="C"
+  r4[image]="kathara/frr"
+
+  r5[ipv6]="true"
+  r5[0]="C"
+  r5[1]="D"
+  r5[image]="kathara/frr"
+
+
+test:
+
+  requiring_startup:
+    - r1
+    - r2
+    - r3
+    - r4
+    - r5
+
+  ip_mapping:
+    r1:
+      lo:   {{ expected.r1.interfaces.lo.cidr }}
+      eth0: {{ expected.r1.interfaces.eth0.cidr }}
+      eth1: {{ expected.r1.interfaces.eth1.cidr }}
+
+
+
+  daemons:
+    r1: [zebra, ospf6d]
+    r2: [zebra, ospf6d]
+    r3: [zebra, ospf6d]
+    r4: [zebra, ospf6d]
+    r5: [zebra, ospf6d]
+
+  custom_commands:
+
+    
+    r1:
+      # Adjacences OSPF Full
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '2\.2\.2\.2\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '3\.3\.3\.3\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '4\.4\.4\.4\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '5\.5\.5\.5\s+\d+\s+\S+\s+Full'
+
+
+
+      # Expected paths
+      # r2 loopback : via eth0 
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+{{ expected.r2.interfaces.lo.cidr | replace(":", "\\:") | replace("/", "\\/") }}\s+\S+\s+eth0'
+      # r3 loopback : via eth0 
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+{{ expected.r3.interfaces.lo.cidr | replace(":", "\\:") | replace("/", "\\/") }}\s+\S+\s+eth0'
+      # r4 loopback : via eth0 
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+{{ expected.r4.interfaces.lo.cidr | replace(":", "\\:") | replace("/", "\\/") }}\s+\S+\s+eth0'
+      # r5 loopback : via eth1 
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+{{ expected.r5.interfaces.lo.cidr | replace(":", "\\:") | replace("/", "\\/") }}\s+\S+\s+eth1'
+
+  
+
+    r5:
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '1\.1\.1\.1\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '2\.2\.2\.2\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '4\.4\.4\.4\s+\d+\s+\S+\s+Full'
+
+  
+

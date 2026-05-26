@@ -1,0 +1,183 @@
+lab:
+  name: bgp_iBGP_ipv6_lab
+  author: Noah Van Horenbeke
+  ipv6: true
+
+nodes:
+  as1_r1:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as1_r1_lo
+      eth0:
+        link: A
+        subnet: A_net
+        host_offset: 1
+      eth1:
+        link: G
+        subnet: G_net
+        host_offset: 1
+      eth2:
+        link: H
+        subnet: H_net
+        host_offset: 1
+    daemons: [zebra, bgpd, ospf6d]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+  as4_r2:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as4_r2_lo
+      eth0:
+        link: B
+        subnet: B_net
+        host_offset: 1
+      eth1:
+        link: F
+        subnet: F_net
+        host_offset: 1
+      eth2:
+        link: K
+        subnet: K_net
+        host_offset: 1
+    daemons: [zebra, bgpd, ospf6d]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+
+  as4_r3:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as4_r3_lo
+      eth0:
+        link: C
+        subnet: C_net
+        host_offset: 1
+      eth1:
+        link: K
+        subnet: K_net
+        host_offset: 2
+    daemons: [zebra, bgpd, ospf6d]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+  as1_r4:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as1_r4_lo
+      eth0:
+        link: C
+        subnet: C_net
+        host_offset: 2
+      eth1:
+        link: G
+        subnet: G_net
+        host_offset: 2
+      eth2:
+        link: J
+        subnet: J_net
+        host_offset: 1
+    daemons: [zebra, bgpd, ospf6d]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+  as1_r5:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as1_r5_lo
+      eth0:
+        link: B
+        subnet: B_net
+        host_offset: 2
+      eth1:
+        link: I
+        subnet: I_net
+        host_offset: 1
+      eth2:
+        link: J
+        subnet: J_net
+        host_offset: 2
+    daemons: [zebra, bgpd, ospf6d]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+  as1_r6:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as1_r6_lo
+      eth0:
+        link: H
+        subnet: H_net
+        host_offset: 2
+      eth1:
+        link: I
+        subnet: I_net
+        host_offset: 2
+    daemons: [zebra, bgpd,ospf6d]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+  as3_r8:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as3_r8_lo
+      eth0:
+        link: A
+        subnet: A_net
+        host_offset: 2
+      eth1:
+        link: D
+        subnet: D_net
+        host_offset: 1
+    daemons: [zebra, bgpd]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+  as5_r9:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as5_r9_lo
+      eth0:
+        link: D
+        subnet: D_net
+        host_offset: 2
+      eth1:
+        link: E
+        subnet: E_net
+        host_offset: 1
+    daemons: [zebra, bgpd]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+  as2_d1:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: as2_d1_lo
+      eth0:
+        link: E
+        subnet: E_net
+        host_offset: 2
+      eth1:
+        link: F
+        subnet: F_net
+        host_offset: 2
+    daemons: [zebra, bgpd]
+    bgp:
+      advertise_loopback: true
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1

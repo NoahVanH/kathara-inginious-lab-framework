@@ -1,0 +1,32 @@
+errors:
+
+  # passe par eth1 pour rejoindre r4 au lieu de eth0
+  wrong_cost_r2_eth0:
+    kind: wrong_ospf_cost
+    node: r2
+    interface: eth0
+    new_cost: 46
+
+  wrong_cost_r2_eth1:
+    kind: wrong_ospf_cost
+    node: r2
+    interface: eth1
+    new_cost: 10
+
+  wrong_cost_r1_eth1:
+    kind: wrong_ospf_cost
+    node: r1
+    interface: eth1
+    new_cost: 10
+  
+  wrong_cost_r4_eth1:
+    kind: wrong_ospf_cost
+    node: r4
+    interface: eth1
+    new_cost: 32
+
+  wrong_cost_r3_eth1:
+    kind: wrong_ospf_cost
+    node: r3
+    interface: eth1
+    new_cost: 45

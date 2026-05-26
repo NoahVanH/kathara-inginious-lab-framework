@@ -1,0 +1,144 @@
+protocols:
+  as1:
+    template: router_bgp_only
+    bgp:
+      local_as: 1
+      router_id: 1.1.1.1
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as2
+          neighbor_interface: eth0
+          remote_as: 2
+          relationship: peer
+          local_preference: 100
+
+        - local_interface: eth1
+          neighbor_node: as3
+          neighbor_interface: eth0
+          remote_as: 3
+          relationship: customer
+          local_preference: 200
+
+        - local_interface: eth2
+          neighbor_node: as4
+          neighbor_interface: eth0
+          remote_as: 4
+          relationship: customer
+          local_preference: 200
+      ibgp_neighbors: []
+
+  as2:
+    template: router_bgp_only
+    bgp:
+      local_as: 2
+      router_id: 2.2.2.2
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as1
+          neighbor_interface: eth0
+          remote_as: 1
+          relationship: peer
+          local_preference: 100
+
+
+        - local_interface: eth1
+          neighbor_node: as4
+          neighbor_interface: eth1
+          remote_as: 4
+          relationship: customer
+          local_preference: 200
+       
+      ibgp_neighbors: []
+
+  as3:
+    template: router_bgp_only
+    bgp:
+      local_as: 3
+      router_id: 3.3.3.3
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as1
+          neighbor_interface: eth1
+          remote_as: 1
+          relationship: provider
+          local_preference: 50
+
+        - local_interface: eth1
+          neighbor_node: as4
+          neighbor_interface: eth2
+          remote_as: 4
+          relationship: peer
+          local_preference: 100
+      ibgp_neighbors: []
+
+  as4:
+    template: router_bgp_only
+    bgp:
+      local_as: 4
+      router_id: 4.4.4.4
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as1
+          neighbor_interface: eth2
+          remote_as: 1
+          relationship: provider
+          local_preference: 50
+
+        - local_interface: eth1
+          neighbor_node: as2
+          neighbor_interface: eth1
+          remote_as: 2
+          relationship: provider
+          local_preference: 50
+
+        - local_interface: eth2
+          neighbor_node: as3
+          neighbor_interface: eth1
+          remote_as: 3
+          relationship: peer
+          local_preference: 100
+
+        - local_interface: eth3
+          neighbor_node: as7
+          neighbor_interface: eth0
+          remote_as: 7
+          relationship: customer
+          local_preference: 200
+      ibgp_neighbors: []
+
+  as7:
+    template: router_bgp_only
+    bgp:
+      local_as: 7
+      router_id: 7.7.7.7
+      network_interfaces: [lo]
+      ebgp_neighbors:
+        - local_interface: eth0
+          neighbor_node: as4
+          neighbor_interface: eth3
+          remote_as: 4
+          relationship: provider
+          local_preference: 50
+      ibgp_neighbors: []
+
+# as1
+# eth0 ↔ as2
+# eth1 ↔ as3
+# eth2 ↔ as4
+# as2
+# eth0 ↔ as1
+# eth1 ↔ as4
+# as3
+# eth0 ↔ as1
+# eth1 ↔ as4
+# as4
+# eth0 ↔ as1
+# eth1 ↔ as2
+# eth2 ↔ as3
+# eth3 ↔ as7
+# as7
+# eth0 ↔ as4

@@ -1,0 +1,29 @@
+# Check the apply_error function in build_variants.py to see all the supported error types and their expected fields in errors.yaml.
+
+errors:
+  r1_wrong_route_mask:
+    node: r1
+    kind: route_prefixlen
+    route_index: 0
+    new_prefixlen: 30
+
+  r1_wrong_lan_mask:
+    node: r1
+    kind: interface_prefixlen
+    interface: eth1
+    new_prefixlen: 30
+
+  r1_wrong_transit_mask:
+    node: r1
+    kind: interface_prefixlen
+    interface: eth0
+    new_prefixlen: 24
+
+  r2_eth0_down:
+    node: r2
+    kind: interface_down
+    interface: eth0
+
+  h2_missing_default_route:
+    node: h2
+    kind: remove_default_route

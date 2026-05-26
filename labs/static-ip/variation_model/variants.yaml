@@ -1,0 +1,101 @@
+variants:
+- id: 0
+  scheme: scheme_10
+  errors:
+  - r1_wrong_route_mask
+  - r1_wrong_lan_mask
+- id: 1
+  scheme: scheme_10
+  errors:
+  - r1_wrong_route_mask
+  - r1_wrong_transit_mask
+- id: 2
+  scheme: scheme_10
+  errors:
+  - r1_wrong_route_mask
+  - r2_eth0_down
+- id: 3
+  scheme: scheme_10
+  errors:
+  - r1_wrong_route_mask
+  - h2_missing_default_route
+- id: 4
+  scheme: scheme_10
+  errors:
+  - r1_wrong_lan_mask
+  - r1_wrong_transit_mask
+- id: 5
+  scheme: scheme_10
+  errors:
+  - r1_wrong_lan_mask
+  - r2_eth0_down
+- id: 6
+  scheme: scheme_10
+  errors:
+  - r1_wrong_lan_mask
+  - h2_missing_default_route
+- id: 7
+  scheme: scheme_10
+  errors:
+  - r1_wrong_transit_mask
+  - r2_eth0_down
+- id: 8
+  scheme: scheme_10
+  errors:
+  - r1_wrong_transit_mask
+  - h2_missing_default_route
+- id: 9
+  scheme: scheme_10
+  errors:
+  - r2_eth0_down
+  - h2_missing_default_route
+- id: 10
+  scheme: scheme_192
+  errors:
+  - r1_wrong_route_mask
+  - r1_wrong_lan_mask
+- id: 11
+  scheme: scheme_192
+  errors:
+  - r1_wrong_route_mask
+  - r1_wrong_transit_mask
+- id: 12
+  scheme: scheme_192
+  errors:
+  - r1_wrong_route_mask
+  - r2_eth0_down
+- id: 13
+  scheme: scheme_192
+  errors:
+  - r1_wrong_route_mask
+  - h2_missing_default_route
+- id: 14
+  scheme: scheme_192
+  errors:
+  - r1_wrong_lan_mask
+  - r1_wrong_transit_mask
+- id: 15
+  scheme: scheme_192
+  errors:
+  - r1_wrong_lan_mask
+  - r2_eth0_down
+- id: 16
+  scheme: scheme_192
+  errors:
+  - r1_wrong_lan_mask
+  - h2_missing_default_route
+- id: 17
+  scheme: scheme_192
+  errors:
+  - r1_wrong_transit_mask
+  - r2_eth0_down
+- id: 18
+  scheme: scheme_192
+  errors:
+  - r1_wrong_transit_mask
+  - h2_missing_default_route
+- id: 19
+  scheme: scheme_192
+  errors:
+  - r2_eth0_down
+  - h2_missing_default_route

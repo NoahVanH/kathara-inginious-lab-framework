@@ -1,0 +1,115 @@
+{% if node.bgp is defined and node.bgp -%}
+frr version 8.4
+frr defaults traditional
+hostname {{ node_name }}
+service integrated-vtysh-config
+!
+{%- for ifname, iface in node.interfaces.items() %}
+interface {{ ifname }}
+!
+{%- endfor %}
+! --- COMMUNITY LISTS ---
+bgp community-list standard CUSTOMER permit 100:1
+bgp community-list standard PEER permit 100:2
+bgp community-list standard PROVIDER permit 100:3
+!
+{%- for net in node.bgp.networks | default([]) %}
+ipv6 prefix-list OWN_PREFIX seq {{ loop.index * 10 }} permit {{ net }}
+{%- endfor %}
+!
+router bgp {{ node.bgp.local_as }}
+ bgp router-id {{ node.bgp.router_id }}
+ no bgp ebgp-requires-policy
+ no bgp default ipv4-unicast
+{%- for neigh in node.bgp.ebgp_neighbors | default([]) %}
+ neighbor {{ neigh.ip }} remote-as {{ neigh.remote_as }}
+{%- endfor %}
+ !
+ address-family ipv6 unicast
+{%- for net in node.bgp.networks | default([]) %}
+  network {{ net }}
+{%- endfor %}
+{%- for neigh in node.bgp.ebgp_neighbors | default([]) %}
+{%- if neigh.activate | default(true) %}
+  neighbor {{ neigh.ip }} activate
+{%- endif %}
+{%- if neigh.apply_import_route_map | default(true) and neigh.local_preference is not none %}
+  neighbor {{ neigh.ip }} route-map LP_{{ neigh.neighbor_node }} {{neigh.import_route_map_direction | default("in")}}
+{%- endif %}
+{%- if neigh.apply_export_route_map | default(true) %}
+  {%- if neigh.export_route_map_type == "all" %}
+  neighbor {{ neigh.ip }} route-map EXPORT_ALL out
+  {%- elif neigh.export_route_map_type == "provider_leak" %}
+  neighbor {{ neigh.ip }} route-map EXPORT_PROVIDER_LEAK out
+  {%- else %}
+    {%- if neigh.relationship == "customer" %}
+  neighbor {{ neigh.ip }} route-map EXPORT_CUSTOMER out
+    {%- elif neigh.relationship == "peer" %}
+  neighbor {{ neigh.ip }} route-map EXPORT_PEER out
+    {%- elif neigh.relationship == "provider" %}
+  neighbor {{ neigh.ip }} route-map EXPORT_PROVIDER out
+    {%- endif %}
+  {%- endif %}
+{%- endif %}
+{%- endfor %}
+ exit-address-family
+!
+{# ===== EXPORT ROUTE-MAPS DETECTION ===== #}
+{% set exp = namespace(customer=false, peer=false, provider=false, all=false, provider_leak=false) -%}
+{%- for neigh in node.bgp.ebgp_neighbors | default([]) %}
+{%- if neigh.apply_export_route_map | default(true) %}
+  {%- if neigh.export_route_map_type == "all" %}
+    {% set exp.all = true %}
+  {%- elif neigh.export_route_map_type == "provider_leak" %}
+    {% set exp.provider_leak = true %}
+  {%- else %}
+    {%- if neigh.relationship == "customer" %}{% set exp.customer = true %}
+    {%- elif neigh.relationship == "peer" %}{% set exp.peer = true %}
+    {%- elif neigh.relationship == "provider" %}{% set exp.provider = true %}
+    {%- endif %}
+  {%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- if exp.customer %}
+route-map EXPORT_CUSTOMER permit 10
+!
+{%- endif %}
+{%- if exp.peer %}
+route-map EXPORT_PEER permit 10
+ match ipv6 address prefix-list OWN_PREFIX
+!
+route-map EXPORT_PEER permit 20
+ match community CUSTOMER
+!
+{%- endif %}
+{%- if exp.provider %}
+route-map EXPORT_PROVIDER permit 10
+ match ipv6 address prefix-list OWN_PREFIX
+!
+route-map EXPORT_PROVIDER permit 20
+ match community CUSTOMER
+!
+{%- endif %}
+{%- if exp.all %}
+route-map EXPORT_ALL permit 10
+!
+{%- endif %}
+{%- if exp.provider_leak %}
+route-map EXPORT_PROVIDER_LEAK permit 10
+!
+{%- endif %}
+{# ===== LOCAL PREF ===== #}
+{%- for neigh in node.bgp.ebgp_neighbors | default([]) %}
+{%- if neigh.local_preference is not none %}
+route-map LP_{{ neigh.neighbor_node }} permit 10
+ set local-preference {{ neigh.local_preference }}
+ set community {{
+   "100:1" if neigh.relationship == "customer"
+   else "100:2" if neigh.relationship == "peer"
+   else "100:3"
+ }} additive
+!
+{%- endif %}
+{%- endfor %}
+line vty
+{%- endif %}

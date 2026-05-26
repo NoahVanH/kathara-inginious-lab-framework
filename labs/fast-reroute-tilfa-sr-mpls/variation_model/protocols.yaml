@@ -1,0 +1,158 @@
+protocols:
+  r1:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0001.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 10, ti_lfa: true }   # link A -> R5
+        eth1: { metric: 10, ti_lfa: true }   # link D -> R2
+        eth2: { metric: 10, ti_lfa: true }   # link C -> R4
+    sr:
+      enabled: true
+      global_block: { lower: 16000, upper: 23999 }
+      local_block:  { lower: 15000, upper: 15999 }
+      index: 1
+    ti_lfa:
+      level: level-1
+      node_protection: true
+      link_fallback: true
+    mpls:
+      enabled: true
+
+  r2:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0002.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 10, ti_lfa: true }   # link E -> R3
+        eth1: { metric: 10, ti_lfa: true }   # link D -> R1
+    sr: { enabled: true, global_block: {lower: 16000, upper: 23999}, local_block: {lower: 15000, upper: 15999}, index: 2 }
+    ti_lfa: { level: level-1, node_protection: true, link_fallback: true }
+    mpls: { enabled: true }
+
+  r3:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0003.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 10, ti_lfa: true }   # link F -> R8
+        eth1: { metric: 10, ti_lfa: true }   # link E -> R2
+        eth2: { metric: 10, ti_lfa: true }   # link K -> R6
+    sr: { enabled: true, global_block: {lower: 16000, upper: 23999}, local_block: {lower: 15000, upper: 15999}, index: 3 }
+    ti_lfa: { level: level-1, node_protection: true, link_fallback: true }
+    mpls: { enabled: true }
+
+  r4:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0004.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 5,  ti_lfa: true }   # link L -> R7  (IGP=5)
+        eth1: { metric: 10, ti_lfa: true }   # link G -> R5
+        eth2: { metric: 10, ti_lfa: true }   # link C -> R1
+        eth3: { metric: 10, ti_lfa: true }   # link I -> R6
+    sr: { enabled: true, global_block: {lower: 16000, upper: 23999}, local_block: {lower: 15000, upper: 15999}, index: 4 }
+    ti_lfa: { level: level-1, node_protection: true, link_fallback: true }
+    mpls: { enabled: true }
+
+  r5:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0005.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 10, ti_lfa: true }   # link A -> R1
+        eth1: { metric: 10, ti_lfa: true }   # link G -> R4
+    sr: { enabled: true, global_block: {lower: 16000, upper: 23999}, local_block: {lower: 15000, upper: 15999}, index: 5 }
+    ti_lfa: { level: level-1, node_protection: true, link_fallback: true }
+    mpls: { enabled: true }
+
+  r6:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0006.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 5,  ti_lfa: true }   # link J -> R7  (IGP=5)
+        eth1: { metric: 10, ti_lfa: true }   # link H -> R8
+        eth2: { metric: 10, ti_lfa: true }   # link K -> R3
+        eth3: { metric: 10, ti_lfa: true }   # link I -> R4
+    sr: { enabled: true, global_block: {lower: 16000, upper: 23999}, local_block: {lower: 15000, upper: 15999}, index: 6 }
+    ti_lfa: { level: level-1, node_protection: true, link_fallback: true }
+    mpls: { enabled: true }
+
+  r7:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0007.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 5, ti_lfa: true }    # link L -> R4  (IGP=5)
+        eth1: { metric: 5, ti_lfa: true }    # link J -> R6  (IGP=5)
+    sr: { enabled: true, global_block: {lower: 16000, upper: 23999}, local_block: {lower: 15000, upper: 15999}, index: 7 }
+    ti_lfa: { level: level-1, node_protection: true, link_fallback: true }
+    mpls: { enabled: true }
+
+  r8:
+    template: router_isis_sr
+    isis:
+      net: "49.0001.0000.0000.0008.00"
+      is_type: level-1
+      level: level-1
+      area_tag: CORE
+      metric_style: wide
+      hello_interval: 3
+      lsp_gen_interval: 5
+      interfaces:
+        lo:  { passive: true }
+        eth0: { metric: 10, ti_lfa: true }   # link F -> R3
+        eth1: { metric: 10, ti_lfa: true }   # link H -> R6
+    sr: { enabled: true, global_block: {lower: 16000, upper: 23999}, local_block: {lower: 15000, upper: 15999}, index: 8 }
+    ti_lfa: { level: level-1, node_protection: true, link_fallback: true }
+    mpls: { enabled: true }

@@ -1,0 +1,59 @@
+frr version 8.4
+frr defaults traditional
+
+log file /tmp/frr.log
+!debug zebra mpls detailed
+!debug isis sr-events
+!debug zebra packet
+hostname {{ node_name }}
+service integrated-vtysh-config
+!
+
+!
+
+{%- set area_tag = node.isis.area_tag %}
+
+{%- for ifname, iface in node.interfaces.items() %}
+interface {{ ifname }}
+{%-   if node.isis is defined and node.isis.interfaces is defined and ifname in node.isis.interfaces %}
+{%-     set if_isis = node.isis.interfaces[ifname] %}
+ ipv6 router isis {{ area_tag }}
+{%-     if ifname == "lo" or if_isis.passive | default(false) %}
+{%-       if ifname == "lo" %}
+ ip address {{ node.sr.index }}.{{ node.sr.index }}.{{ node.sr.index }}.{{ node.sr.index }}/32
+ ipv6 address {{ iface.cidr }}
+{%-       endif %}
+ isis passive
+{%-     else %}
+ isis circuit-type {{ node.isis.level }}
+ isis network point-to-point
+ isis bfd
+ isis hello-interval {{ node.isis.hello_interval | default(3) }}
+ isis metric {{ if_isis.metric | default(10) }} {{ node.isis.level }}
+{%-       if if_isis.ti_lfa | default(false) %}
+{%-         set np = (' node-protection' + (' link-fallback' if node.ti_lfa.link_fallback | default(false) else '')) if node.ti_lfa.node_protection | default(false) else '' %}
+ isis fast-reroute ti-lfa{{ np }}
+{%-       endif %}
+{%-     endif %}
+{%-   endif %}
+!
+{%- endfor %}
+
+{%- if node.isis is defined %}
+router isis {{ area_tag }}
+ net {{ node.isis.net }}
+ is-type {{ node.isis.is_type }}
+ metric-style {{ node.isis.metric_style | default('wide') }}
+ lsp-gen-interval {{ node.isis.lsp_gen_interval | default(5) }}
+{%-   if node.sr is defined and node.sr.enabled | default(false) %}
+ segment-routing on
+ segment-routing global-block {{ node.sr.global_block.lower }} {{ node.sr.global_block.upper }}
+ segment-routing local-block {{ node.sr.local_block.lower }} {{ node.sr.local_block.upper }}
+ segment-routing prefix {{ node.interfaces.lo.cidr }} index {{ node.sr.index }}
+ segment-routing node-msd 8
+{%-   endif %}
+!
+{%- endif %}
+
+line vty
+!

@@ -1,0 +1,84 @@
+lab:
+  name: ospf_single_area_lab
+  author: "Noah Van Horenbeke"
+  ipv6: true
+
+nodes:
+  r1:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: r1_lo
+      eth0:
+        link: A
+        subnet: A_net
+        host_offset: 1
+      eth1:
+        link: C
+        subnet: C_net
+        host_offset: 1
+    daemons: [zebra, ospf6d]
+
+
+  r2:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: r2_lo
+      eth0:
+        link: A
+        subnet: A_net
+        host_offset: 2
+      eth1:
+        link: D
+        subnet: D_net
+        host_offset: 1
+    daemons: [zebra, ospf6d]
+
+
+  r3:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: r3_lo
+      eth0:
+        link: A
+        subnet: A_net
+        host_offset: 3
+      eth1:
+        link: B
+        subnet: B_net
+        host_offset: 1
+    daemons: [zebra, ospf6d]
+
+
+  r4:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: r4_lo
+      eth0:
+        link: B
+        subnet: B_net
+        host_offset: 2
+      eth1:
+        link: C
+        subnet: C_net
+        host_offset: 2
+    daemons: [zebra, ospf6d]
+
+
+  r5:
+    image: kathara/frr
+    interfaces:
+      lo:
+        subnet: r5_lo
+      eth0:
+        link: C
+        subnet: C_net
+        host_offset: 3
+      eth1:
+        link: D
+        subnet: D_net
+        host_offset: 2
+    daemons: [zebra, ospf6d]

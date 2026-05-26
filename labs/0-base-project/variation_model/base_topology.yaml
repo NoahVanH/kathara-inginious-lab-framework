@@ -1,0 +1,45 @@
+
+nodes:
+  h1:
+    interfaces:
+      eth0:
+        subnet: h1_lan
+        host_offset: 2
+    default_route:
+      via_node: r1
+      via_interface: eth1
+
+  r1:
+    interfaces:
+      eth0:
+        subnet: r1_r2
+        host_offset: 1
+      eth1:
+        subnet: h1_lan
+        host_offset: 1
+    static_routes:
+      - to_subnet: h2_lan
+        via_node: r2
+        via_interface: eth0
+
+  r2:
+    interfaces:
+      eth0:
+        subnet: r1_r2
+        host_offset: 2
+      eth1:
+        subnet: h2_lan
+        host_offset: 1
+    static_routes:
+      - to_subnet: h1_lan
+        via_node: r1
+        via_interface: eth0
+
+  h2:
+    interfaces:
+      eth0:
+        subnet: h2_lan
+        host_offset: 2
+    default_route:
+      via_node: r2
+      via_interface: eth1

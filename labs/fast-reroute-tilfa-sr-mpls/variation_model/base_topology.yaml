@@ -1,0 +1,173 @@
+lab:
+  name: fastreroute_tilfa_lab
+
+  ipv6: true
+
+nodes:
+  r1:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r1_lo
+      eth0:
+        link: A
+        subnet: A_net
+        host_offset: 1
+      eth1:
+        link: D
+        subnet: D_net
+        host_offset: 1
+      eth2:
+        link: C
+        subnet: C_net
+        host_offset: 1
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000
+
+  r2:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r2_lo
+      eth0:
+        link: E
+        subnet: E_net
+        host_offset: 1
+      eth1:
+        link: D
+        subnet: D_net
+        host_offset: 2
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000
+
+  r3:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r3_lo
+      eth0:
+        link: F
+        subnet: F_net
+        host_offset: 1
+      eth1:
+        link: E
+        subnet: E_net
+        host_offset: 2
+      eth2:
+        link: K
+        subnet: K_net
+        host_offset: 1
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000
+
+  r4:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r4_lo
+      eth0:
+        link: L
+        subnet: L_net
+        host_offset: 1
+      eth1:
+        link: G
+        subnet: G_net
+        host_offset: 1
+      eth2:
+        link: C
+        subnet: C_net
+        host_offset: 2
+      eth3:
+        link: I
+        subnet: I_net
+        host_offset: 1
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000
+
+  r5:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r5_lo
+      eth0:
+        link: A
+        subnet: A_net
+        host_offset: 2
+      eth1:
+        link: G
+        subnet: G_net
+        host_offset: 2
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000
+
+  r6:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r6_lo
+      eth0:
+        link: J
+        subnet: J_net
+        host_offset: 1
+      eth1:
+        link: H
+        subnet: H_net
+        host_offset: 1
+      eth2:
+        link: K
+        subnet: K_net
+        host_offset: 2
+      eth3:
+        link: I
+        subnet: I_net
+        host_offset: 2
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000
+
+  r7:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r7_lo
+      eth0:
+        link: L
+        subnet: L_net
+        host_offset: 2
+      eth1:
+        link: J
+        subnet: J_net
+        host_offset: 2
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000
+
+  r8:
+    image: kathara/frr:latest
+    interfaces:
+      lo:
+        subnet: r8_lo
+      eth0:
+        link: F
+        subnet: F_net
+        host_offset: 2
+      eth1:
+        link: H
+        subnet: H_net
+        host_offset: 2
+    daemons: [zebra, isisd]
+    sysctl:
+      net.ipv6.conf.all.forwarding: 1
+      net.mpls.platform_labels: 100000

@@ -1,0 +1,45 @@
+errors:
+
+  wrong_local_pref_provider_too_high_as2_to_as4:
+    kind: bgp_wrong_local_pref
+    node: as2
+    neighbors: [as4]
+    value: 500  
+
+  wrong_local_pref_provider_too_high_as2_to_as1: # AS2 go by AS1 (provider) local pref instead of AS4 (customer)
+    kind: bgp_wrong_local_pref
+    node: as2
+    neighbors: [as1]
+    value: 300
+
+# only one detect it
+  wrong_local_pref_customer_too_low_as4_to_as7: # AS4 don't use his customer 
+    kind: bgp_wrong_local_pref
+    node: as4
+    neighbors: [as7]
+    value: 50
+
+  export_provider_routes_to_peer_as4: 
+    kind: bgp_export_provider_to_peer
+    node: as4
+    neighbor: as3
+    
+  export_all_to_peer_as3: 
+    kind: bgp_export_all_to_peer
+    node: as3
+    neighbor: as4
+
+  missing_route_map_as4:
+    kind: bgp_remove_route_map
+    node: as4
+    neighbors: [as1, as2]
+
+  wrong_route_map_direction_as2_to_as4:
+    kind: bgp_wrong_route_map_direction
+    node: as2
+    neighbors: [as4]
+
+  missing_route_map_as1:
+    kind: bgp_remove_route_map
+    node: as1
+    neighbors: [as3]

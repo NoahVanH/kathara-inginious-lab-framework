@@ -1,0 +1,31 @@
+{% if node.bgp is defined and node.bgp %}
+router bgp {{ node.bgp.local_as }}
+ bgp router-id {{ node.bgp.router_id }}
+ no bgp ebgp-requires-policy
+ no bgp default ipv4-unicast
+{% for neigh in node.bgp.ebgp_neighbors | default([]) %}
+ neighbor {{ neigh.ip }} remote-as {{ neigh.remote_as }}
+{% endfor %}
+{% for neigh in node.bgp.ibgp_neighbors | default([]) %}
+ neighbor {{ neigh.ip }} remote-as {{ neigh.remote_as }}
+{% if neigh.update_source_lo | default(false) %}
+ neighbor {{ neigh.ip }} update-source lo
+{% endif %}
+{% endfor %}
+ !
+ address-family ipv6 unicast
+{% for net in node.bgp.networks | default([]) %}
+  network {{ net }}
+{% endfor %}
+{% for neigh in node.bgp.ebgp_neighbors | default([]) %}
+  neighbor {{ neigh.ip }} activate
+{% endfor %}
+{% for neigh in node.bgp.ibgp_neighbors | default([]) %}
+  neighbor {{ neigh.ip }} activate
+{% if neigh.next_hop_self | default(false) %}
+  neighbor {{ neigh.ip }} next-hop-self
+{% endif %}
+{% endfor %}
+ exit-address-family
+!
+{% endif %}

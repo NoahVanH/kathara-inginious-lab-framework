@@ -1,0 +1,496 @@
+variants:
+- id: 0
+  scheme: scheme_db8_a
+  errors:
+  - as1_r6_blackhole
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 1
+  scheme: scheme_db8_a
+  errors:
+  - as1_r6_blackhole
+  - missing_next_hop_self_as1_r4
+- id: 2
+  scheme: scheme_db8_a
+  errors:
+  - as1_r6_blackhole
+  - missing_update_source_as1_r5
+- id: 3
+  scheme: scheme_db8_a
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 4
+  scheme: scheme_db8_a
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 5
+  scheme: scheme_db8_a
+  errors:
+  - only_neigh
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 6
+  scheme: scheme_db8_a
+  errors:
+  - only_neigh
+  - missing_next_hop_self_as1_r4
+- id: 7
+  scheme: scheme_db8_a
+  errors:
+  - only_neigh
+  - missing_update_source_as1_r5
+- id: 8
+  scheme: scheme_db8_a
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 9
+  scheme: scheme_db8_a
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 10
+  scheme: scheme_db8_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - as_partition_core
+- id: 11
+  scheme: scheme_db8_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_next_hop_self_as1_r4
+- id: 12
+  scheme: scheme_db8_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_update_source_as1_r5
+- id: 13
+  scheme: scheme_db8_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 14
+  scheme: scheme_db8_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 15
+  scheme: scheme_db8_a
+  errors:
+  - as_partition_core
+  - missing_next_hop_self_as1_r4
+- id: 16
+  scheme: scheme_db8_a
+  errors:
+  - as_partition_core
+  - missing_update_source_as1_r5
+- id: 17
+  scheme: scheme_db8_a
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 18
+  scheme: scheme_db8_a
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 19
+  scheme: scheme_db8_a
+  errors:
+  - missing_next_hop_self_as1_r4
+  - missing_update_source_as1_r5
+- id: 20
+  scheme: scheme_db8_a
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 21
+  scheme: scheme_db8_a
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 22
+  scheme: scheme_db8_a
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 23
+  scheme: scheme_db8_a
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 24
+  scheme: scheme_db8_a
+  errors:
+  - wrong_remote_as_as1_r1_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 25
+  scheme: scheme_db8_b
+  errors:
+  - as1_r6_blackhole
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 26
+  scheme: scheme_db8_b
+  errors:
+  - as1_r6_blackhole
+  - missing_next_hop_self_as1_r4
+- id: 27
+  scheme: scheme_db8_b
+  errors:
+  - as1_r6_blackhole
+  - missing_update_source_as1_r5
+- id: 28
+  scheme: scheme_db8_b
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 29
+  scheme: scheme_db8_b
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 30
+  scheme: scheme_db8_b
+  errors:
+  - only_neigh
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 31
+  scheme: scheme_db8_b
+  errors:
+  - only_neigh
+  - missing_next_hop_self_as1_r4
+- id: 32
+  scheme: scheme_db8_b
+  errors:
+  - only_neigh
+  - missing_update_source_as1_r5
+- id: 33
+  scheme: scheme_db8_b
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 34
+  scheme: scheme_db8_b
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 35
+  scheme: scheme_db8_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_next_hop_self_as1_r4
+- id: 36
+  scheme: scheme_db8_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_update_source_as1_r5
+- id: 37
+  scheme: scheme_db8_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 38
+  scheme: scheme_db8_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 39
+  scheme: scheme_db8_b
+  errors:
+  - as_partition_core
+  - missing_next_hop_self_as1_r4
+- id: 40
+  scheme: scheme_db8_b
+  errors:
+  - as_partition_core
+  - missing_update_source_as1_r5
+- id: 41
+  scheme: scheme_db8_b
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 42
+  scheme: scheme_db8_b
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 43
+  scheme: scheme_db8_b
+  errors:
+  - missing_next_hop_self_as1_r4
+  - missing_update_source_as1_r5
+- id: 44
+  scheme: scheme_db8_b
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 45
+  scheme: scheme_db8_b
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 46
+  scheme: scheme_db8_b
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 47
+  scheme: scheme_db8_b
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 48
+  scheme: scheme_db8_b
+  errors:
+  - wrong_remote_as_as1_r1_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 49
+  scheme: scheme_3fff_a
+  errors:
+  - as1_r6_blackhole
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 50
+  scheme: scheme_3fff_a
+  errors:
+  - as1_r6_blackhole
+  - missing_next_hop_self_as1_r4
+- id: 51
+  scheme: scheme_3fff_a
+  errors:
+  - as1_r6_blackhole
+  - missing_update_source_as1_r5
+- id: 52
+  scheme: scheme_3fff_a
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 53
+  scheme: scheme_3fff_a
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 54
+  scheme: scheme_3fff_a
+  errors:
+  - only_neigh
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 55
+  scheme: scheme_3fff_a
+  errors:
+  - only_neigh
+  - missing_next_hop_self_as1_r4
+- id: 56
+  scheme: scheme_3fff_a
+  errors:
+  - only_neigh
+  - missing_update_source_as1_r5
+- id: 57
+  scheme: scheme_3fff_a
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 58
+  scheme: scheme_3fff_a
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 59
+  scheme: scheme_3fff_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - as_partition_core
+- id: 60
+  scheme: scheme_3fff_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_next_hop_self_as1_r4
+- id: 61
+  scheme: scheme_3fff_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_update_source_as1_r5
+- id: 62
+  scheme: scheme_3fff_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 63
+  scheme: scheme_3fff_a
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 64
+  scheme: scheme_3fff_a
+  errors:
+  - as_partition_core
+  - missing_next_hop_self_as1_r4
+- id: 65
+  scheme: scheme_3fff_a
+  errors:
+  - as_partition_core
+  - missing_update_source_as1_r5
+- id: 66
+  scheme: scheme_3fff_a
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 67
+  scheme: scheme_3fff_a
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 68
+  scheme: scheme_3fff_a
+  errors:
+  - missing_next_hop_self_as1_r4
+  - missing_update_source_as1_r5
+- id: 69
+  scheme: scheme_3fff_a
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 70
+  scheme: scheme_3fff_a
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 71
+  scheme: scheme_3fff_a
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 72
+  scheme: scheme_3fff_a
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 73
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_remote_as_as1_r1_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 74
+  scheme: scheme_3fff_b
+  errors:
+  - as1_r6_blackhole
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 75
+  scheme: scheme_3fff_b
+  errors:
+  - as1_r6_blackhole
+  - missing_next_hop_self_as1_r4
+- id: 76
+  scheme: scheme_3fff_b
+  errors:
+  - as1_r6_blackhole
+  - missing_update_source_as1_r5
+- id: 77
+  scheme: scheme_3fff_b
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 78
+  scheme: scheme_3fff_b
+  errors:
+  - as1_r6_blackhole
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 79
+  scheme: scheme_3fff_b
+  errors:
+  - only_neigh
+  - single_missing_ibgp_as1_r4_as1_r5
+- id: 80
+  scheme: scheme_3fff_b
+  errors:
+  - only_neigh
+  - missing_next_hop_self_as1_r4
+- id: 81
+  scheme: scheme_3fff_b
+  errors:
+  - only_neigh
+  - missing_update_source_as1_r5
+- id: 82
+  scheme: scheme_3fff_b
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 83
+  scheme: scheme_3fff_b
+  errors:
+  - only_neigh
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 84
+  scheme: scheme_3fff_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - as_partition_core
+- id: 85
+  scheme: scheme_3fff_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_next_hop_self_as1_r4
+- id: 86
+  scheme: scheme_3fff_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - missing_update_source_as1_r5
+- id: 87
+  scheme: scheme_3fff_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 88
+  scheme: scheme_3fff_b
+  errors:
+  - single_missing_ibgp_as1_r4_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 89
+  scheme: scheme_3fff_b
+  errors:
+  - as_partition_core
+  - missing_next_hop_self_as1_r4
+- id: 90
+  scheme: scheme_3fff_b
+  errors:
+  - as_partition_core
+  - missing_update_source_as1_r5
+- id: 91
+  scheme: scheme_3fff_b
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 92
+  scheme: scheme_3fff_b
+  errors:
+  - as_partition_core
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 93
+  scheme: scheme_3fff_b
+  errors:
+  - missing_next_hop_self_as1_r4
+  - missing_update_source_as1_r5
+- id: 94
+  scheme: scheme_3fff_b
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 95
+  scheme: scheme_3fff_b
+  errors:
+  - missing_next_hop_self_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 96
+  scheme: scheme_3fff_b
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r1_as1_r4
+- id: 97
+  scheme: scheme_3fff_b
+  errors:
+  - missing_update_source_as1_r5
+  - wrong_remote_as_as1_r5_as1_r6
+- id: 98
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_remote_as_as1_r1_as1_r4
+  - wrong_remote_as_as1_r5_as1_r6

@@ -1,0 +1,481 @@
+variants:
+- id: 0
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+- id: 1
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 2
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+- id: 3
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as7_as4
+- id: 4
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 5
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 6
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 7
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 8
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 9
+  scheme: scheme_db8_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 10
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 11
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 12
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 13
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 14
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 15
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 16
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 17
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 18
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 19
+  scheme: scheme_db8_a
+  errors:
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 20
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+- id: 21
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 22
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+- id: 23
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as7_as4
+- id: 24
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 25
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 26
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 27
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 28
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 29
+  scheme: scheme_db8_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 30
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 31
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 32
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 33
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 34
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 35
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 36
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 37
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 38
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 39
+  scheme: scheme_db8_b
+  errors:
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 40
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+- id: 41
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 42
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+- id: 43
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as7_as4
+- id: 44
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 45
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 46
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 47
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 48
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 49
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 50
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 51
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 52
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 53
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 54
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 55
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 56
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 57
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 58
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 59
+  scheme: scheme_3fff_a
+  errors:
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 60
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+- id: 61
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 62
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+- id: 63
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as7_as4
+- id: 64
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 65
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 66
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 67
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 68
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 69
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_local_pref_customer_too_low_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 70
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+- id: 71
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+- id: 72
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as7_as4
+- id: 73
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 74
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 75
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_provider_to_customer_as1_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 76
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+- id: 77
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as7_as4
+- id: 78
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_peer_to_customer_as3_to_as4
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4
+- id: 79
+  scheme: scheme_3fff_b
+  errors:
+  - wrong_role_customer_to_provider_as4_to_as2
+  - wrong_role_pair_as1_as2
+  - wrong_role_pair_as7_as4

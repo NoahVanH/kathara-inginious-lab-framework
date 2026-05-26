@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+{% for iface, data in node.interfaces.items() %}
+{%- if iface != "lo" %}
+ip link set dev {{ iface }}{% if data.up %} up{% else %} down{% endif %}
+ip -6 addr add {{ data.cidr }} dev {{ iface }}
+{%- if node.mpls is defined and node.mpls.enabled | default(false) %}
+sysctl -w net.mpls.conf.{{ iface }}.input=1
+sysctl -w net.mpls.platform_labels=100000
+sysctl -w net.ipv6.conf.all.forwarding=1
+{%- endif %}
+{%- else %}
+
+ip link set dev lo up
+{%- endif %}
+{% endfor %}
+
+{% if node.default_route %}
+ip -6 route add default via {{ node.default_route }}
+{% endif %}
+
+{% for route in node.static_routes %}
+ip -6 route add {{ route.to }} via {{ route.via }}
+{% endfor %}
+
+# with custom image
+#sleep 5
+#su -c "/usr/lib/frr/frrinit.sh start"
+
+# with kathara image
+systemctl start frr

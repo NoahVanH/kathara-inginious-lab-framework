@@ -1,0 +1,47 @@
+{% if node.bgp is defined and node.bgp -%}
+frr version 8.4
+frr defaults traditional
+hostname {{ node_name }}
+service integrated-vtysh-config
+!
+{%- for ifname, iface in node.interfaces.items() %}
+interface {{ ifname }}
+!
+{%- endfor %}
+
+router bgp {{ node.bgp.local_as }}
+ bgp router-id {{ node.bgp.router_id }}
+ no bgp ebgp-requires-policy
+ no bgp default ipv4-unicast
+! BGP Roles (RFC 9234)
+{%- for neigh in node.bgp.ebgp_neighbors | default([]) %}
+ neighbor {{ neigh.ip }} remote-as {{ neigh.remote_as }}
+{%- set role = neigh.role_override if neigh.role_override is not none else (
+    "provider" if neigh.relationship == "customer"
+    else "customer" if neigh.relationship == "provider"
+    else "peer"
+) %}
+ neighbor {{ neigh.ip }} local-role {{ role }} strict-mode
+{%- endfor %}
+!
+address-family ipv6 unicast
+{%- for net in node.bgp.networks | default([]) %}
+ network {{ net }}
+{%- endfor %}
+{%- for neigh in node.bgp.ebgp_neighbors | default([]) %}
+ neighbor {{ neigh.ip }} activate
+ {%- if neigh.apply_import_route_map | default(true) and neigh.local_preference is not none %}
+ neighbor {{ neigh.ip }} route-map LP_{{ neigh.neighbor_node }} in
+ {%- endif %}
+{%- endfor %}
+exit-address-family
+!
+{%- for neigh in node.bgp.ebgp_neighbors | default([]) %}
+{%- if neigh.local_preference is not none %}
+route-map LP_{{ neigh.neighbor_node }} permit 10
+ set local-preference {{ neigh.local_preference }}
+!
+{%- endif %}
+{%- endfor %}
+line vty
+{%- endif %}

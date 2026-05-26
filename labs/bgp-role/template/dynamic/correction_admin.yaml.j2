@@ -1,0 +1,250 @@
+labs_path: ../create_lab.py
+convergence_time: 7
+default_image: kathara/base
+structure: lab.conf
+
+lab_inline: |
+  LAB_NAME="bgp_ipv6_bgp_roles"
+
+  LAB_AUTHOR="Noah Van Horenbeke"
+
+  as1[ipv6]="true"
+  as1[0]="A"
+  as1[1]="B"
+  as1[2]="C"
+  as1[image]="kathara/frr"
+
+  as2[ipv6]="true"
+  as2[0]="A"
+  as2[1]="D"
+  as2[image]="kathara/frr"
+
+  as3[ipv6]="true"
+  as3[0]="B"
+  as3[1]="E"
+  as3[image]="kathara/frr"
+
+  as4[ipv6]="true"
+  as4[0]="C"
+  as4[1]="D"
+  as4[2]="E"
+  as4[3]="F"
+  as4[image]="kathara/frr"
+
+  as7[ipv6]="true"
+  as7[0]="F"
+  as7[image]="kathara/frr"
+
+
+test:
+
+  requiring_startup:
+    - as1
+    - as2
+    - as3
+    - as4
+    - as7
+
+  # It is normal that the ping not work.
+  # Reachability tests (ping) are not relevant for this lab, we will focus on BGP routes and attributes
+ 
+
+  ip_mapping:
+    as1:
+      lo: {{ expected.as1.interfaces.lo.cidr }}
+      eth0: {{ expected.as1.interfaces.eth0.cidr }}
+      eth1: {{ expected.as1.interfaces.eth1.cidr }}
+      eth2: {{ expected.as1.interfaces.eth2.cidr }}
+
+    as2:
+      lo: {{ expected.as2.interfaces.lo.cidr }}
+      eth0: {{ expected.as2.interfaces.eth0.cidr }}
+      eth1: {{ expected.as2.interfaces.eth1.cidr }}
+
+    as3:
+      lo: {{ expected.as3.interfaces.lo.cidr }}
+      eth0: {{ expected.as3.interfaces.eth0.cidr }}
+      eth1: {{ expected.as3.interfaces.eth1.cidr }}
+
+    as4:
+      lo: {{ expected.as4.interfaces.lo.cidr }}
+      eth0: {{ expected.as4.interfaces.eth0.cidr }}
+      eth1: {{ expected.as4.interfaces.eth1.cidr }}
+      eth2: {{ expected.as4.interfaces.eth2.cidr }}
+      eth3: {{ expected.as4.interfaces.eth3.cidr }}
+
+    as7:
+      lo: {{ expected.as7.interfaces.lo.cidr }}
+      eth0: {{ expected.as7.interfaces.eth0.cidr }}
+
+  daemons:
+    as1: [zebra, bgpd]
+    as2: [zebra, bgpd]
+    as3: [zebra, bgpd]
+    as4: [zebra, bgpd]
+    as7: [zebra, bgpd]
+
+  protocols:
+    bgpd:
+      networks:
+        as1:
+          - {{ expected.as1.interfaces.lo.cidr }}
+        as2:
+          - {{ expected.as2.interfaces.lo.cidr }}
+        as3:
+          - {{ expected.as3.interfaces.lo.cidr }}
+        as4:
+          - {{ expected.as4.interfaces.lo.cidr }}
+        as7:
+          - {{ expected.as7.interfaces.lo.cidr }}
+
+  custom_commands:
+
+    # =========================
+    # AS4 
+    # =========================
+    as4:
+
+      # EXPORT → AS3 (peer)
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as3.interfaces.eth1.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"totalPrefixCounter":\s*2'
+
+      # EXPORT → providers
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as1.interfaces.eth2.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"totalPrefixCounter":\s*2'
+
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as2.interfaces.eth1.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"totalPrefixCounter":\s*2'
+
+      # PATH checks
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as3.interfaces.eth1.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"network":"{{ expected.as4.interfaces.lo.cidr }}"[^}]*"path":""'
+
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as3.interfaces.eth1.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"network":"{{ expected.as7.interfaces.lo.cidr }}"[^}]*"path":"7"'
+
+      # IMPORT checks
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as3.interfaces.eth1.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*1'
+
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as1.interfaces.eth2.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*3'
+
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as2.interfaces.eth1.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*3'
+
+      # Check BGP Roles
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as2.interfaces.eth1.cidr.split("/")[0] }} json" | grep -E "\"localRole\"|\"remoteRole\""'
+        regex_match: '"localRole":"customer"[^}]*"remoteRole":"provider"'
+
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as1.interfaces.eth2.cidr.split("/")[0] }} json" | grep -E "\"localRole\"|\"remoteRole\""'
+        regex_match: '"localRole":"customer"[^}]*"remoteRole":"provider"'
+
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as3.interfaces.eth1.cidr.split("/")[0] }} json" | grep "\"localRole\":\"peer\""'
+        regex_match: '"localRole":"peer"'
+
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as3.interfaces.eth1.cidr.split("/")[0] }} json" | grep "\"remoteRole\":\"peer\""'
+        regex_match: '"remoteRole":"peer"'
+
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as7.interfaces.eth0.cidr.split("/")[0] }} json" | grep -E "\"localRole\"|\"remoteRole\""'
+        regex_match: '"localRole":"provider"[^}]*"remoteRole":"customer"'
+
+
+
+
+    # =========================
+    # AS3
+    # =========================
+    as3:
+
+      # EXPORT → AS4 (peer)
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as4.interfaces.eth2.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"totalPrefixCounter":\s*1' # CHANGE WITH BGP ROLES : now AS3 only export his own prefix
+
+      # IMPORT checks
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as1.interfaces.eth1.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*4'
+
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as4.interfaces.eth2.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*2'
+
+
+
+      # Best path to AS7
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"{{ expected.as7.interfaces.lo.cidr }}".*"bestpath":true.*"nexthops":\[\{"ip":"{{ expected.as4.interfaces.eth2.cidr.split("/")[0] }}"'
+
+      # Check BGP Roles
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as4.interfaces.eth2.cidr.split("/")[0] }} json" | grep "\"localRole\":\"peer\""'
+        regex_match: '"localRole":"peer"'
+
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as4.interfaces.eth2.cidr.split("/")[0] }} json" | grep "\"remoteRole\":\"peer\""'
+        regex_match: '"remoteRole":"peer"'
+
+    # =========================
+    # AS1
+    # =========================
+    as1:
+
+      # EXPORT → AS2 (peer)
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as2.interfaces.eth0.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"totalPrefixCounter":\s*4'
+
+      # IMPORT
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as2.interfaces.eth0.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*3'
+
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as3.interfaces.eth0.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*1' # CHANGE WITH BGP ROLES : AS1 receives 1 prefix from AS3 instead of 2 because AS3 only export its own prefix and not the one received from AS4
+
+
+
+      # Best path to AS7
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"{{ expected.as7.interfaces.lo.cidr }}".*"bestpath":true.*"nexthops":\[\{"ip":"{{ expected.as4.interfaces.eth0.cidr.split("/")[0] }}"'
+
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as4.interfaces.eth0.cidr.split("/")[0] }} json" | grep -E "\"localRole\"|\"remoteRole\""'
+        regex_match: '"localRole":"provider"[^}]*"remoteRole":"customer"'
+
+
+    # =========================
+    # AS2
+    # =========================
+    as2:
+
+      # EXPORT → AS4 (customer)
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as4.interfaces.eth1.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"totalPrefixCounter":\s*5'
+
+      # IMPORT
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as1.interfaces.eth0.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*4'
+
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as4.interfaces.eth1.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*2'
+
+
+
+      # Best path to AS7
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"{{ expected.as7.interfaces.lo.cidr }}".*"bestpath":true.*"nexthops":\[\{"ip":"{{ expected.as4.interfaces.eth1.cidr.split("/")[0] }}"'
+
+      # Check BGP Roles
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as4.interfaces.eth1.cidr.split("/")[0] }} json" | grep -E "\"localRole\"|\"remoteRole\""'
+        regex_match: '"localRole":"provider"[^}]*"remoteRole":"customer"'
+    # =========================
+    # AS7
+    # =========================
+    as7:
+
+      # EXPORT → provider
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as4.interfaces.eth3.cidr.split("/")[0] }} advertised-routes json"'
+        regex_match: '"totalPrefixCounter":\s*1'
+
+      # IMPORT
+      - command: 'vtysh -c "show bgp neighbors {{ expected.as4.interfaces.eth3.cidr.split("/")[0] }} prefix-counts json"'
+        regex_match: '"Valid":\s*4'
+
+      # Check BGP Roles
+      - command: 'vtysh -c "show bgp neighbor {{ expected.as4.interfaces.eth3.cidr.split("/")[0] }} json" | grep -E "\"localRole\"|\"remoteRole\""'
+        regex_match: '"localRole":"customer"[^}]*"remoteRole":"provider"'

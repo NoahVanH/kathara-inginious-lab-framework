@@ -1,0 +1,68 @@
+errors:
+  wrong_remote_as_r4_r6:
+    kind: bgp_wrong_remote_as
+    node: r4
+    neighbor_ip_from:
+      node: r6
+      interface: eth0
+    wrong_as: 65895
+
+  r4_missing_activate_r6_ipv6:
+    kind: bgp_remove_activate
+    node: r4
+    neighbor_ip_from:
+      node: r6
+      interface: eth0
+    address_family: ipv6
+
+  r5_missing_network_lo:
+    kind: bgp_remove_network
+    node: r5
+    network_from:
+      node: r5
+      interface: lo
+
+  r5_wrong_network_mask_lo:
+    kind: bgp_replace_network_prefixlen
+    node: r5
+    network_from:
+      node: r5
+      interface: lo
+    new_prefixlen: 64
+
+  r2_missing_next_hop_self_r4:
+    kind: bgp_remove_next_hop_self
+    node: r2
+    neighbor_ip_from:
+      node: r4
+      interface: lo
+
+  r2_wrong_neighbor_ip_r4:
+    kind: bgp_wrong_neighbor_ip
+    node: r2
+    neighbor_ip_from:
+      node: r4
+      interface: lo
+    wrong_neighbor_ip: 2001:db8:bb67::4
+
+  r2_missing_update_source_r4:
+    kind: bgp_remove_update_source
+    node: r2
+    neighbor_ip_from:
+      node: r4
+      interface: lo
+
+  r6_missing_network_lo:
+    kind: bgp_remove_network
+    node: r6
+    network_from:
+      node: r6
+      interface: lo
+
+  r4_wrong_neighbor_ip_r6:
+    kind: bgp_wrong_neighbor_ip
+    node: r4
+    neighbor_ip_from:
+      node: r6
+      interface: eth0
+    wrong_neighbor_ip: 2001:db8:daed::6

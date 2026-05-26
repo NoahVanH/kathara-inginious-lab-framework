@@ -1,0 +1,251 @@
+
+
+
+labs_path: ../create_lab.py
+convergence_time: 10
+default_image: kathara/frr:latest
+structure: lab.conf
+
+lab_inline: |
+  LAB_NAME="fastreroute_tilfa_lab"
+  LAB_AUTHOR="Noah Van Horenbeke"
+
+  r1[ipv6]="true"
+  r1[0]="A"
+  r1[1]="D"
+  r1[2]="C"
+  r1[image]="kathara/frr:latest"
+  r1[sysctl]="net.mpls.platform_labels=100000"
+
+  r2[ipv6]="true"
+  r2[0]="E"
+  r2[1]="D"
+  r2[image]="kathara/frr:latest"
+  r2[sysctl]="net.mpls.platform_labels=100000"
+
+  r3[ipv6]="true"
+  r3[0]="F"
+  r3[1]="E"
+  r3[2]="K"
+  r3[image]="kathara/frr:latest"
+  r3[sysctl]="net.mpls.platform_labels=100000"
+
+  r4[ipv6]="true"
+  r4[0]="L"
+  r4[1]="G"
+  r4[2]="C"
+  r4[3]="I"
+  r4[image]="kathara/frr:latest"
+  r4[sysctl]="net.mpls.platform_labels=100000"
+
+  r5[ipv6]="true"
+  r5[0]="A"
+  r5[1]="G"
+  r5[image]="kathara/frr:latest"
+  r5[sysctl]="net.mpls.platform_labels=100000"
+
+  r6[ipv6]="true"
+  r6[0]="J"
+  r6[1]="H"
+  r6[2]="K"
+  r6[3]="I"
+  r6[image]="kathara/frr:latest"
+  r6[sysctl]="net.mpls.platform_labels=100000"
+
+  r7[ipv6]="true"
+  r7[0]="L"
+  r7[1]="J"
+  r7[image]="kathara/frr:latest"
+  r7[sysctl]="net.mpls.platform_labels=100000"
+
+  r8[ipv6]="true"
+  r8[0]="F"
+  r8[1]="H"
+  r8[image]="kathara/frr:latest"
+  r8[sysctl]="net.mpls.platform_labels=100000"
+
+
+test:
+
+  requiring_startup:
+    - r1
+    - r2
+    - r3
+    - r4
+    - r5
+    - r6
+    - r7
+    - r8
+
+  ip_mapping:
+    r1:
+      lo:   {{ expected.r1.interfaces.lo.cidr }}
+      eth0: {{ expected.r1.interfaces.eth0.cidr }}
+      eth1: {{ expected.r1.interfaces.eth1.cidr }}
+      eth2: {{ expected.r1.interfaces.eth2.cidr }}
+
+    r2:
+      lo:   {{ expected.r2.interfaces.lo.cidr }}
+      eth0: {{ expected.r2.interfaces.eth0.cidr }}
+      eth1: {{ expected.r2.interfaces.eth1.cidr }}
+
+    r3:
+      lo:   {{ expected.r3.interfaces.lo.cidr }}
+      eth0: {{ expected.r3.interfaces.eth0.cidr }}
+      eth1: {{ expected.r3.interfaces.eth1.cidr }}
+      eth2: {{ expected.r3.interfaces.eth2.cidr }}
+
+    r4:
+      lo:   {{ expected.r4.interfaces.lo.cidr }}
+      eth0: {{ expected.r4.interfaces.eth0.cidr }}
+      eth1: {{ expected.r4.interfaces.eth1.cidr }}
+      eth2: {{ expected.r4.interfaces.eth2.cidr }}
+      eth3: {{ expected.r4.interfaces.eth3.cidr }}
+
+    r5:
+      lo:   {{ expected.r5.interfaces.lo.cidr }}
+      eth0: {{ expected.r5.interfaces.eth0.cidr }}
+      eth1: {{ expected.r5.interfaces.eth1.cidr }}
+
+    r6:
+      lo:   {{ expected.r6.interfaces.lo.cidr }}
+      eth0: {{ expected.r6.interfaces.eth0.cidr }}
+      eth1: {{ expected.r6.interfaces.eth1.cidr }}
+      eth2: {{ expected.r6.interfaces.eth2.cidr }}
+      eth3: {{ expected.r6.interfaces.eth3.cidr }}
+
+    r7:
+      lo:   {{ expected.r7.interfaces.lo.cidr }}
+      eth0: {{ expected.r7.interfaces.eth0.cidr }}
+      eth1: {{ expected.r7.interfaces.eth1.cidr }}
+
+    r8:
+      lo:   {{ expected.r8.interfaces.lo.cidr }}
+      eth0: {{ expected.r8.interfaces.eth0.cidr }}
+      eth1: {{ expected.r8.interfaces.eth1.cidr }}
+
+  daemons:
+    r1: [zebra, isisd]
+    r2: [zebra, isisd]
+    r3: [zebra, isisd]
+    r4: [zebra, isisd]
+    r5: [zebra, isisd]
+    r6: [zebra, isisd]
+    r7: [zebra, isisd]
+    r8: [zebra, isisd]
+
+  custom_commands:
+
+
+    # =========================
+    # R2 — 2 voisins (r3, r1)
+    # eth0->r3, eth1->r1
+    # =========================
+    r2:
+      # Adjacences
+      - command: 'vtysh -c "show isis neighbor"'
+        regex_match: 'r3\s+eth0\s+\S+\s+Up'
+      - command: 'vtysh -c "show isis neighbor"'
+        regex_match: 'r1\s+eth1\s+\S+\s+Up'
+
+      # LSP present
+      - command: 'vtysh -c "show isis database"'
+        regex_match: 'r2\.00-00\s+\*'
+
+      # Prefix-SID 
+      - command: 'vtysh -c "show isis database detail r2.00-00"'
+        regex_match: 'SR Prefix-SID Index:\s*2'
+
+      # Directs neighbors : r1 (16001) et r3 (16003)
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b16001\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b16003\s+SR \(IS-IS\)'
+      # Other routers reachable
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b16004\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b16005\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b16006\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b16007\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b16008\s+SR \(IS-IS\)'
+
+      # TI-LFA active with at least 1 entry in Low
+
+
+      # Protection coverage 100%
+      # How to check it? Look at the QCM for an example 
+
+
+      # TI-LFA configured on both interfaces
+      - command: 'vtysh -c "show running-config"'
+        regex_match: '(?s)interface eth0.*?isis fast-reroute ti-lfa node-protection link-fallback'
+      - command: 'vtysh -c "show running-config"'
+        regex_match: '(?s)interface eth1.*?isis fast-reroute ti-lfa node-protection link-fallback'
+
+      # Every distant loopback reachable
+      - command: 'vtysh -c "show ipv6 route isis"'
+        regex_match: '{{ expected.r1.interfaces.lo.cidr | replace(":", "\\:") }}'
+      - command: 'vtysh -c "show ipv6 route isis"'
+        regex_match: '{{ expected.r3.interfaces.lo.cidr | replace(":", "\\:") }}'
+      - command: 'vtysh -c "show ipv6 route isis"'
+        regex_match: '{{ expected.r4.interfaces.lo.cidr | replace(":", "\\:") }}'
+      - command: 'vtysh -c "show ipv6 route isis"'
+        regex_match: '{{ expected.r5.interfaces.lo.cidr | replace(":", "\\:") }}'
+      - command: 'vtysh -c "show ipv6 route isis"'
+        regex_match: '{{ expected.r6.interfaces.lo.cidr | replace(":", "\\:") }}'
+      - command: 'vtysh -c "show ipv6 route isis"'
+        regex_match: '{{ expected.r7.interfaces.lo.cidr | replace(":", "\\:") }}'
+      - command: 'vtysh -c "show ipv6 route isis"'
+        regex_match: '{{ expected.r8.interfaces.lo.cidr | replace(":", "\\:") }}'
+
+      # SR Prefix-SID corrects for direct neighbors
+      - command: 'vtysh -c "show isis route prefix-sid"'
+        regex_match: '{{ expected.r1.interfaces.lo.cidr | replace(":", "\\:") }}\s+\d+\s+\S+\s+\S+\s+1\s+Pop\(16001\)'
+      - command: 'vtysh -c "show isis route prefix-sid"'
+        regex_match: '{{ expected.r3.interfaces.lo.cidr | replace(":", "\\:") }}\s+\d+\s+\S+\s+\S+\s+3\s+Pop\(16003\)'
+
+    
+
+    r6:
+      # Adjacences
+      - command: 'vtysh -c "show isis neighbor"'
+        regex_match: 'r7\s+eth0\s+\S+\s+Up'
+      - command: 'vtysh -c "show isis neighbor"'
+        regex_match: 'r8\s+eth1\s+\S+\s+Up'
+      - command: 'vtysh -c "show isis neighbor"'
+        regex_match: 'r3\s+eth2\s+\S+\s+Up'
+      - command: 'vtysh -c "show isis neighbor"'
+        regex_match: 'r4\s+eth3\s+\S+\s+Up'
+
+
+      # Prefix-SID 6 annonce
+      - command: 'vtysh -c "show isis database detail r6.00-00"'
+        regex_match: 'SR Prefix-SID Index:\s*6'
+
+
+      # Adjacency-SIDs (SRLB 15000-15999) — 4 adjacences
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b15000\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b15001\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b15002\s+SR \(IS-IS\)'
+      - command: 'vtysh -c "show mpls table"'
+        regex_match: '\b15003\s+SR \(IS-IS\)'
+
+
+      # TI-LFA configured on all interfaces
+      # To check it you can use 
+      # 1) Show the running config
+      # 2) Use a regex to verify that the command (you wanted to check) is present under each interface configuration.
+
+
+
+
+      # SR Prefix-SID corrects for direct neighbors
+      - command: 'vtysh -c "show isis route prefix-sid"'
+        regex_match: '{{ expected.r8.interfaces.lo.cidr | replace(":", "\\:") }}\s+\d+\s+\S+\s+\S+\s+8\s+Pop\(16008\)'

@@ -1,0 +1,10 @@
+{% for iface, data in node.interfaces.items() %}
+ip link set dev {{ iface }}{% if data.up %} up{% else %} down{% endif %}
+ip addr add {{ data.cidr }} dev {{ iface }}
+{% endfor %}
+
+{% for route in static_routes %}
+ip route add {{ route.to }} via {{ route.via }}
+{% endfor %}
+
+sysctl -w net.ipv4.ip_forward=1

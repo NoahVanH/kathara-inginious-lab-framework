@@ -1,0 +1,44 @@
+errors:
+  as1_r6_blackhole:
+    kind: ibgp_remove_all
+    nodes: [as1_r6]
+
+  only_neigh:
+    kind: ibgp_keep_only_direct_neighbors
+    nodes: [as1_r1, as1_r4, as1_r5, as1_r6]
+    direct_neighbors:
+      as1_r1: [as1_r4, as1_r6]
+      as1_r4: [as1_r1, as1_r5]
+      as1_r5: [as1_r4, as1_r6]
+      as1_r6: [as1_r1, as1_r5]
+
+  single_missing_ibgp_as1_r4_as1_r5:
+    kind: ibgp_remove_sessions
+    sessions:
+      - [as1_r4, as1_r5]
+
+  as_partition_core:
+    kind: ibgp_remove_sessions
+    sessions:
+      - [as1_r1, as1_r5]
+      - [as1_r4, as1_r6]
+
+  missing_next_hop_self_as1_r4:
+    kind: ibgp_remove_next_hop_self
+    nodes: [as1_r4]
+
+  missing_update_source_as1_r5:
+    kind: ibgp_remove_update_source
+    nodes: [as1_r5]
+
+  wrong_remote_as_as1_r1_as1_r4:
+    kind: ibgp_wrong_remote_as
+    sessions:
+      - [as1_r1, as1_r4]
+    wrong_as: 5
+
+  wrong_remote_as_as1_r5_as1_r6:
+    kind: ibgp_wrong_remote_as
+    sessions:
+      - [as1_r5, as1_r6]
+    wrong_as: 6

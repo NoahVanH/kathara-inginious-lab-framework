@@ -1,0 +1,202 @@
+[
+  {
+    "variant_id": 0,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_route_mask",
+      "r1_wrong_lan_mask"
+    ],
+    "variant_dir": "build/variants/variant_0",
+    "zip_path": "build/zips/variant_0.zip"
+  },
+  {
+    "variant_id": 1,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_route_mask",
+      "r1_wrong_transit_mask"
+    ],
+    "variant_dir": "build/variants/variant_1",
+    "zip_path": "build/zips/variant_1.zip"
+  },
+  {
+    "variant_id": 2,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_route_mask",
+      "r2_eth0_down"
+    ],
+    "variant_dir": "build/variants/variant_2",
+    "zip_path": "build/zips/variant_2.zip"
+  },
+  {
+    "variant_id": 3,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_route_mask",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_3",
+    "zip_path": "build/zips/variant_3.zip"
+  },
+  {
+    "variant_id": 4,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_lan_mask",
+      "r1_wrong_transit_mask"
+    ],
+    "variant_dir": "build/variants/variant_4",
+    "zip_path": "build/zips/variant_4.zip"
+  },
+  {
+    "variant_id": 5,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_lan_mask",
+      "r2_eth0_down"
+    ],
+    "variant_dir": "build/variants/variant_5",
+    "zip_path": "build/zips/variant_5.zip"
+  },
+  {
+    "variant_id": 6,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_lan_mask",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_6",
+    "zip_path": "build/zips/variant_6.zip"
+  },
+  {
+    "variant_id": 7,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_transit_mask",
+      "r2_eth0_down"
+    ],
+    "variant_dir": "build/variants/variant_7",
+    "zip_path": "build/zips/variant_7.zip"
+  },
+  {
+    "variant_id": 8,
+    "scheme": "scheme_10",
+    "errors": [
+      "r1_wrong_transit_mask",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_8",
+    "zip_path": "build/zips/variant_8.zip"
+  },
+  {
+    "variant_id": 9,
+    "scheme": "scheme_10",
+    "errors": [
+      "r2_eth0_down",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_9",
+    "zip_path": "build/zips/variant_9.zip"
+  },
+  {
+    "variant_id": 10,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_route_mask",
+      "r1_wrong_lan_mask"
+    ],
+    "variant_dir": "build/variants/variant_10",
+    "zip_path": "build/zips/variant_10.zip"
+  },
+  {
+    "variant_id": 11,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_route_mask",
+      "r1_wrong_transit_mask"
+    ],
+    "variant_dir": "build/variants/variant_11",
+    "zip_path": "build/zips/variant_11.zip"
+  },
+  {
+    "variant_id": 12,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_route_mask",
+      "r2_eth0_down"
+    ],
+    "variant_dir": "build/variants/variant_12",
+    "zip_path": "build/zips/variant_12.zip"
+  },
+  {
+    "variant_id": 13,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_route_mask",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_13",
+    "zip_path": "build/zips/variant_13.zip"
+  },
+  {
+    "variant_id": 14,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_lan_mask",
+      "r1_wrong_transit_mask"
+    ],
+    "variant_dir": "build/variants/variant_14",
+    "zip_path": "build/zips/variant_14.zip"
+  },
+  {
+    "variant_id": 15,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_lan_mask",
+      "r2_eth0_down"
+    ],
+    "variant_dir": "build/variants/variant_15",
+    "zip_path": "build/zips/variant_15.zip"
+  },
+  {
+    "variant_id": 16,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_lan_mask",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_16",
+    "zip_path": "build/zips/variant_16.zip"
+  },
+  {
+    "variant_id": 17,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_transit_mask",
+      "r2_eth0_down"
+    ],
+    "variant_dir": "build/variants/variant_17",
+    "zip_path": "build/zips/variant_17.zip"
+  },
+  {
+    "variant_id": 18,
+    "scheme": "scheme_192",
+    "errors": [
+      "r1_wrong_transit_mask",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_18",
+    "zip_path": "build/zips/variant_18.zip"
+  },
+  {
+    "variant_id": 19,
+    "scheme": "scheme_192",
+    "errors": [
+      "r2_eth0_down",
+      "h2_missing_default_route"
+    ],
+    "variant_dir": "build/variants/variant_19",
+    "zip_path": "build/zips/variant_19.zip"
+  }
+]

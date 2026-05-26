@@ -1,0 +1,29 @@
+labs_path: ../create_lab.py
+convergence_time: 5
+default_image: kathara/base
+structure: lab.conf
+
+
+#This file is used to execute a set of tests on the lab.
+
+#On INGInious, additional tests are available. It is recommended to extend this
+#file to cover common connectivity and routing scenarios.
+
+#See: https://github.com/KatharaFramework/kathara-lab-checker for more information.
+
+test:
+  requiring_startup:
+    - h1
+    - h2
+    - r1
+    - r2
+
+  ip_mapping:
+    h1: { eth0: {{ expected.h1.interfaces.eth0.cidr }} }
+
+  reachability:
+    # Tests de connectivité de base (ping)
+    h1:
+      - {{ expected.h2.interfaces.eth0.cidr.split("/")[0] }}    # Ping de h1 vers h2
+
+

@@ -1,0 +1,433 @@
+variants:
+- id: 0
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r4_missing_activate_r6_ipv6]
+- id: 1
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r5_missing_network_lo]
+- id: 2
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r5_wrong_network_mask_lo]
+- id: 3
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r2_missing_next_hop_self_r4]
+- id: 4
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r2_wrong_neighbor_ip_r4]
+- id: 5
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r2_missing_update_source_r4]
+- id: 6
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r6_missing_network_lo]
+- id: 7
+  scheme: scheme_db8_a
+  errors: [wrong_remote_as_r4_r6, r4_wrong_neighbor_ip_r6]
+- id: 8
+  scheme: scheme_db8_a
+  errors: [r4_missing_activate_r6_ipv6, r5_missing_network_lo]
+- id: 9
+  scheme: scheme_db8_a
+  errors: [r4_missing_activate_r6_ipv6, r5_wrong_network_mask_lo]
+- id: 10
+  scheme: scheme_db8_a
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_next_hop_self_r4]
+- id: 11
+  scheme: scheme_db8_a
+  errors: [r4_missing_activate_r6_ipv6, r2_wrong_neighbor_ip_r4]
+- id: 12
+  scheme: scheme_db8_a
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_update_source_r4]
+- id: 13
+  scheme: scheme_db8_a
+  errors: [r4_missing_activate_r6_ipv6, r6_missing_network_lo]
+- id: 14
+  scheme: scheme_db8_a
+  errors: [r4_missing_activate_r6_ipv6, r4_wrong_neighbor_ip_r6]
+- id: 15
+  scheme: scheme_db8_a
+  errors: [r5_missing_network_lo, r5_wrong_network_mask_lo]
+- id: 16
+  scheme: scheme_db8_a
+  errors: [r5_missing_network_lo, r2_missing_next_hop_self_r4]
+- id: 17
+  scheme: scheme_db8_a
+  errors: [r5_missing_network_lo, r2_wrong_neighbor_ip_r4]
+- id: 18
+  scheme: scheme_db8_a
+  errors: [r5_missing_network_lo, r2_missing_update_source_r4]
+- id: 19
+  scheme: scheme_db8_a
+  errors: [r5_missing_network_lo, r6_missing_network_lo]
+- id: 20
+  scheme: scheme_db8_a
+  errors: [r5_missing_network_lo, r4_wrong_neighbor_ip_r6]
+- id: 21
+  scheme: scheme_db8_a
+  errors: [r5_wrong_network_mask_lo, r2_missing_next_hop_self_r4]
+- id: 22
+  scheme: scheme_db8_a
+  errors: [r5_wrong_network_mask_lo, r2_wrong_neighbor_ip_r4]
+- id: 23
+  scheme: scheme_db8_a
+  errors: [r5_wrong_network_mask_lo, r2_missing_update_source_r4]
+- id: 24
+  scheme: scheme_db8_a
+  errors: [r5_wrong_network_mask_lo, r6_missing_network_lo]
+- id: 25
+  scheme: scheme_db8_a
+  errors: [r5_wrong_network_mask_lo, r4_wrong_neighbor_ip_r6]
+- id: 26
+  scheme: scheme_db8_a
+  errors: [r2_missing_next_hop_self_r4, r2_wrong_neighbor_ip_r4]
+- id: 27
+  scheme: scheme_db8_a
+  errors: [r2_missing_next_hop_self_r4, r2_missing_update_source_r4]
+- id: 28
+  scheme: scheme_db8_a
+  errors: [r2_missing_next_hop_self_r4, r6_missing_network_lo]
+- id: 29
+  scheme: scheme_db8_a
+  errors: [r2_missing_next_hop_self_r4, r4_wrong_neighbor_ip_r6]
+- id: 30
+  scheme: scheme_db8_a
+  errors: [r2_wrong_neighbor_ip_r4, r2_missing_update_source_r4]
+- id: 31
+  scheme: scheme_db8_a
+  errors: [r2_wrong_neighbor_ip_r4, r6_missing_network_lo]
+- id: 32
+  scheme: scheme_db8_a
+  errors: [r2_wrong_neighbor_ip_r4, r4_wrong_neighbor_ip_r6]
+- id: 33
+  scheme: scheme_db8_a
+  errors: [r2_missing_update_source_r4, r6_missing_network_lo]
+- id: 34
+  scheme: scheme_db8_a
+  errors: [r2_missing_update_source_r4, r4_wrong_neighbor_ip_r6]
+- id: 35
+  scheme: scheme_db8_a
+  errors: [r6_missing_network_lo, r4_wrong_neighbor_ip_r6]
+- id: 36
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r4_missing_activate_r6_ipv6]
+- id: 37
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r5_missing_network_lo]
+- id: 38
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r5_wrong_network_mask_lo]
+- id: 39
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r2_missing_next_hop_self_r4]
+- id: 40
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r2_wrong_neighbor_ip_r4]
+- id: 41
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r2_missing_update_source_r4]
+- id: 42
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r6_missing_network_lo]
+- id: 43
+  scheme: scheme_db8_b
+  errors: [wrong_remote_as_r4_r6, r4_wrong_neighbor_ip_r6]
+- id: 44
+  scheme: scheme_db8_b
+  errors: [r4_missing_activate_r6_ipv6, r5_missing_network_lo]
+- id: 45
+  scheme: scheme_db8_b
+  errors: [r4_missing_activate_r6_ipv6, r5_wrong_network_mask_lo]
+- id: 46
+  scheme: scheme_db8_b
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_next_hop_self_r4]
+- id: 47
+  scheme: scheme_db8_b
+  errors: [r4_missing_activate_r6_ipv6, r2_wrong_neighbor_ip_r4]
+- id: 48
+  scheme: scheme_db8_b
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_update_source_r4]
+- id: 49
+  scheme: scheme_db8_b
+  errors: [r4_missing_activate_r6_ipv6, r6_missing_network_lo]
+- id: 50
+  scheme: scheme_db8_b
+  errors: [r4_missing_activate_r6_ipv6, r4_wrong_neighbor_ip_r6]
+- id: 51
+  scheme: scheme_db8_b
+  errors: [r5_missing_network_lo, r5_wrong_network_mask_lo]
+- id: 52
+  scheme: scheme_db8_b
+  errors: [r5_missing_network_lo, r2_missing_next_hop_self_r4]
+- id: 53
+  scheme: scheme_db8_b
+  errors: [r5_missing_network_lo, r2_wrong_neighbor_ip_r4]
+- id: 54
+  scheme: scheme_db8_b
+  errors: [r5_missing_network_lo, r2_missing_update_source_r4]
+- id: 55
+  scheme: scheme_db8_b
+  errors: [r5_missing_network_lo, r6_missing_network_lo]
+- id: 56
+  scheme: scheme_db8_b
+  errors: [r5_missing_network_lo, r4_wrong_neighbor_ip_r6]
+- id: 57
+  scheme: scheme_db8_b
+  errors: [r5_wrong_network_mask_lo, r2_missing_next_hop_self_r4]
+- id: 58
+  scheme: scheme_db8_b
+  errors: [r5_wrong_network_mask_lo, r2_wrong_neighbor_ip_r4]
+- id: 59
+  scheme: scheme_db8_b
+  errors: [r5_wrong_network_mask_lo, r2_missing_update_source_r4]
+- id: 60
+  scheme: scheme_db8_b
+  errors: [r5_wrong_network_mask_lo, r6_missing_network_lo]
+- id: 61
+  scheme: scheme_db8_b
+  errors: [r5_wrong_network_mask_lo, r4_wrong_neighbor_ip_r6]
+- id: 62
+  scheme: scheme_db8_b
+  errors: [r2_missing_next_hop_self_r4, r2_wrong_neighbor_ip_r4]
+- id: 63
+  scheme: scheme_db8_b
+  errors: [r2_missing_next_hop_self_r4, r2_missing_update_source_r4]
+- id: 64
+  scheme: scheme_db8_b
+  errors: [r2_missing_next_hop_self_r4, r6_missing_network_lo]
+- id: 65
+  scheme: scheme_db8_b
+  errors: [r2_missing_next_hop_self_r4, r4_wrong_neighbor_ip_r6]
+- id: 66
+  scheme: scheme_db8_b
+  errors: [r2_wrong_neighbor_ip_r4, r2_missing_update_source_r4]
+- id: 67
+  scheme: scheme_db8_b
+  errors: [r2_wrong_neighbor_ip_r4, r6_missing_network_lo]
+- id: 68
+  scheme: scheme_db8_b
+  errors: [r2_wrong_neighbor_ip_r4, r4_wrong_neighbor_ip_r6]
+- id: 69
+  scheme: scheme_db8_b
+  errors: [r2_missing_update_source_r4, r6_missing_network_lo]
+- id: 70
+  scheme: scheme_db8_b
+  errors: [r2_missing_update_source_r4, r4_wrong_neighbor_ip_r6]
+- id: 71
+  scheme: scheme_db8_b
+  errors: [r6_missing_network_lo, r4_wrong_neighbor_ip_r6]
+- id: 72
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r4_missing_activate_r6_ipv6]
+- id: 73
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r5_missing_network_lo]
+- id: 74
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r5_wrong_network_mask_lo]
+- id: 75
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r2_missing_next_hop_self_r4]
+- id: 76
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r2_wrong_neighbor_ip_r4]
+- id: 77
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r2_missing_update_source_r4]
+- id: 78
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r6_missing_network_lo]
+- id: 79
+  scheme: scheme_3fff_a
+  errors: [wrong_remote_as_r4_r6, r4_wrong_neighbor_ip_r6]
+- id: 80
+  scheme: scheme_3fff_a
+  errors: [r4_missing_activate_r6_ipv6, r5_missing_network_lo]
+- id: 81
+  scheme: scheme_3fff_a
+  errors: [r4_missing_activate_r6_ipv6, r5_wrong_network_mask_lo]
+- id: 82
+  scheme: scheme_3fff_a
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_next_hop_self_r4]
+- id: 83
+  scheme: scheme_3fff_a
+  errors: [r4_missing_activate_r6_ipv6, r2_wrong_neighbor_ip_r4]
+- id: 84
+  scheme: scheme_3fff_a
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_update_source_r4]
+- id: 85
+  scheme: scheme_3fff_a
+  errors: [r4_missing_activate_r6_ipv6, r6_missing_network_lo]
+- id: 86
+  scheme: scheme_3fff_a
+  errors: [r4_missing_activate_r6_ipv6, r4_wrong_neighbor_ip_r6]
+- id: 87
+  scheme: scheme_3fff_a
+  errors: [r5_missing_network_lo, r5_wrong_network_mask_lo]
+- id: 88
+  scheme: scheme_3fff_a
+  errors: [r5_missing_network_lo, r2_missing_next_hop_self_r4]
+- id: 89
+  scheme: scheme_3fff_a
+  errors: [r5_missing_network_lo, r2_wrong_neighbor_ip_r4]
+- id: 90
+  scheme: scheme_3fff_a
+  errors: [r5_missing_network_lo, r2_missing_update_source_r4]
+- id: 91
+  scheme: scheme_3fff_a
+  errors: [r5_missing_network_lo, r6_missing_network_lo]
+- id: 92
+  scheme: scheme_3fff_a
+  errors: [r5_missing_network_lo, r4_wrong_neighbor_ip_r6]
+- id: 93
+  scheme: scheme_3fff_a
+  errors: [r5_wrong_network_mask_lo, r2_missing_next_hop_self_r4]
+- id: 94
+  scheme: scheme_3fff_a
+  errors: [r5_wrong_network_mask_lo, r2_wrong_neighbor_ip_r4]
+- id: 95
+  scheme: scheme_3fff_a
+  errors: [r5_wrong_network_mask_lo, r2_missing_update_source_r4]
+- id: 96
+  scheme: scheme_3fff_a
+  errors: [r5_wrong_network_mask_lo, r6_missing_network_lo]
+- id: 97
+  scheme: scheme_3fff_a
+  errors: [r5_wrong_network_mask_lo, r4_wrong_neighbor_ip_r6]
+- id: 98
+  scheme: scheme_3fff_a
+  errors: [r2_missing_next_hop_self_r4, r2_wrong_neighbor_ip_r4]
+- id: 99
+  scheme: scheme_3fff_a
+  errors: [r2_missing_next_hop_self_r4, r2_missing_update_source_r4]
+- id: 100
+  scheme: scheme_3fff_a
+  errors: [r2_missing_next_hop_self_r4, r6_missing_network_lo]
+- id: 101
+  scheme: scheme_3fff_a
+  errors: [r2_missing_next_hop_self_r4, r4_wrong_neighbor_ip_r6]
+- id: 102
+  scheme: scheme_3fff_a
+  errors: [r2_wrong_neighbor_ip_r4, r2_missing_update_source_r4]
+- id: 103
+  scheme: scheme_3fff_a
+  errors: [r2_wrong_neighbor_ip_r4, r6_missing_network_lo]
+- id: 104
+  scheme: scheme_3fff_a
+  errors: [r2_wrong_neighbor_ip_r4, r4_wrong_neighbor_ip_r6]
+- id: 105
+  scheme: scheme_3fff_a
+  errors: [r2_missing_update_source_r4, r6_missing_network_lo]
+- id: 106
+  scheme: scheme_3fff_a
+  errors: [r2_missing_update_source_r4, r4_wrong_neighbor_ip_r6]
+- id: 107
+  scheme: scheme_3fff_a
+  errors: [r6_missing_network_lo, r4_wrong_neighbor_ip_r6]
+- id: 108
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r4_missing_activate_r6_ipv6]
+- id: 109
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r5_missing_network_lo]
+- id: 110
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r5_wrong_network_mask_lo]
+- id: 111
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r2_missing_next_hop_self_r4]
+- id: 112
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r2_wrong_neighbor_ip_r4]
+- id: 113
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r2_missing_update_source_r4]
+- id: 114
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r6_missing_network_lo]
+- id: 115
+  scheme: scheme_3fff_b
+  errors: [wrong_remote_as_r4_r6, r4_wrong_neighbor_ip_r6]
+- id: 116
+  scheme: scheme_3fff_b
+  errors: [r4_missing_activate_r6_ipv6, r5_missing_network_lo]
+- id: 117
+  scheme: scheme_3fff_b
+  errors: [r4_missing_activate_r6_ipv6, r5_wrong_network_mask_lo]
+- id: 118
+  scheme: scheme_3fff_b
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_next_hop_self_r4]
+- id: 119
+  scheme: scheme_3fff_b
+  errors: [r4_missing_activate_r6_ipv6, r2_wrong_neighbor_ip_r4]
+- id: 120
+  scheme: scheme_3fff_b
+  errors: [r4_missing_activate_r6_ipv6, r2_missing_update_source_r4]
+- id: 121
+  scheme: scheme_3fff_b
+  errors: [r4_missing_activate_r6_ipv6, r6_missing_network_lo]
+- id: 122
+  scheme: scheme_3fff_b
+  errors: [r4_missing_activate_r6_ipv6, r4_wrong_neighbor_ip_r6]
+- id: 123
+  scheme: scheme_3fff_b
+  errors: [r5_missing_network_lo, r5_wrong_network_mask_lo]
+- id: 124
+  scheme: scheme_3fff_b
+  errors: [r5_missing_network_lo, r2_missing_next_hop_self_r4]
+- id: 125
+  scheme: scheme_3fff_b
+  errors: [r5_missing_network_lo, r2_wrong_neighbor_ip_r4]
+- id: 126
+  scheme: scheme_3fff_b
+  errors: [r5_missing_network_lo, r2_missing_update_source_r4]
+- id: 127
+  scheme: scheme_3fff_b
+  errors: [r5_missing_network_lo, r6_missing_network_lo]
+- id: 128
+  scheme: scheme_3fff_b
+  errors: [r5_missing_network_lo, r4_wrong_neighbor_ip_r6]
+- id: 129
+  scheme: scheme_3fff_b
+  errors: [r5_wrong_network_mask_lo, r2_missing_next_hop_self_r4]
+- id: 130
+  scheme: scheme_3fff_b
+  errors: [r5_wrong_network_mask_lo, r2_wrong_neighbor_ip_r4]
+- id: 131
+  scheme: scheme_3fff_b
+  errors: [r5_wrong_network_mask_lo, r2_missing_update_source_r4]
+- id: 132
+  scheme: scheme_3fff_b
+  errors: [r5_wrong_network_mask_lo, r6_missing_network_lo]
+- id: 133
+  scheme: scheme_3fff_b
+  errors: [r5_wrong_network_mask_lo, r4_wrong_neighbor_ip_r6]
+- id: 134
+  scheme: scheme_3fff_b
+  errors: [r2_missing_next_hop_self_r4, r2_wrong_neighbor_ip_r4]
+- id: 135
+  scheme: scheme_3fff_b
+  errors: [r2_missing_next_hop_self_r4, r2_missing_update_source_r4]
+- id: 136
+  scheme: scheme_3fff_b
+  errors: [r2_missing_next_hop_self_r4, r6_missing_network_lo]
+- id: 137
+  scheme: scheme_3fff_b
+  errors: [r2_missing_next_hop_self_r4, r4_wrong_neighbor_ip_r6]
+- id: 138
+  scheme: scheme_3fff_b
+  errors: [r2_wrong_neighbor_ip_r4, r2_missing_update_source_r4]
+- id: 139
+  scheme: scheme_3fff_b
+  errors: [r2_wrong_neighbor_ip_r4, r6_missing_network_lo]
+- id: 140
+  scheme: scheme_3fff_b
+  errors: [r2_wrong_neighbor_ip_r4, r4_wrong_neighbor_ip_r6]
+- id: 141
+  scheme: scheme_3fff_b
+  errors: [r2_missing_update_source_r4, r6_missing_network_lo]
+- id: 142
+  scheme: scheme_3fff_b
+  errors: [r2_missing_update_source_r4, r4_wrong_neighbor_ip_r6]
+- id: 143
+  scheme: scheme_3fff_b
+  errors: [r6_missing_network_lo, r4_wrong_neighbor_ip_r6]

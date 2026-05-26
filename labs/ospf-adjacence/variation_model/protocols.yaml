@@ -1,0 +1,85 @@
+protocols:
+  r1:
+    template: router_ospf6
+    ospf6:
+      router_id: 1.1.1.1
+      interfaces:
+        lo:
+          area: 0.0.0.0
+          passive: true
+        eth0:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1480              # segment A
+        eth1:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1440              # segment C
+
+  r2:
+    template: router_ospf6
+    ospf6:
+      router_id: 2.2.2.2
+      interfaces:
+        lo:
+          area: 0.0.0.0
+          passive: true
+        eth0:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1480              # segment A
+        eth1:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1420              # segment D
+
+  r3:
+    template: router_ospf6
+    ospf6:
+      router_id: 3.3.3.3
+      interfaces:
+        lo:
+          area: 0.0.0.0
+          passive: true
+        eth0:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1480              # segment A
+        eth1:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1460              # segment B
+
+  r4:
+    template: router_ospf6
+    ospf6:
+      router_id: 4.4.4.4
+      interfaces:
+        lo:
+          area: 0.0.0.0
+          passive: true
+        eth0:
+          area: 0.0.0.0
+          cost: 7
+          ifmtu: 1460              # segment B
+        eth1:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1440              # segment C
+
+  r5:
+    template: router_ospf6
+    ospf6:
+      router_id: 5.5.5.5
+      interfaces:
+        lo:
+          area: 0.0.0.0
+          passive: true
+        eth0:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1440              # segment C
+        eth1:
+          area: 0.0.0.0
+          cost: 10
+          ifmtu: 1420              # segment D

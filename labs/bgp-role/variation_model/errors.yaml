@@ -1,0 +1,41 @@
+errors:
+
+
+  wrong_local_pref_customer_too_low_as1_to_as4:
+    kind: bgp_wrong_local_pref
+    node: as1
+    neighbors: [as4]
+    value: 100 # peer instead of customer 
+    
+  wrong_role_provider_to_customer_as1_to_as4:
+    kind: bgp_wrong_role
+    node: as1
+    neighbors: [as4]
+    role: customer  
+
+  wrong_role_peer_to_customer_as3_to_as4:
+    kind: bgp_wrong_role
+    node: as3
+    neighbors: [as4]
+    role: customer  
+
+  wrong_role_customer_to_provider_as4_to_as2:
+    kind: bgp_wrong_role
+    node: as4
+    neighbors: [as2]
+    role: provider
+  
+  wrong_role_pair_as1_as2:
+    kind: bgp_wrong_role_pair
+    a_node: as1
+    b_node: as2
+    a_role: customer
+    b_role: provider
+
+  
+  wrong_role_pair_as7_as4:
+    kind: bgp_wrong_role_pair
+    a_node: as7
+    b_node: as4
+    a_role: provider
+    b_role: customer

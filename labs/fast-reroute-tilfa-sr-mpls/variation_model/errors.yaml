@@ -1,0 +1,68 @@
+errors:
+
+  # -------------------------------------------------------------------------
+  # 1. Segment Routing disabled on a router
+  # -------------------------------------------------------------------------
+  sr_disabled_r2:
+    kind: sr_disabled
+    nodes: [r2]
+
+  sr_disabled_r3:
+    kind: sr_disabled
+    nodes: [r3]
+
+  sr_disabled_r6:
+    kind: sr_disabled
+    nodes: [r6]
+
+  # -------------------------------------------------------------------------
+  # 2. Wrong Segment Routing index (duplicated with R1's index)
+  # -------------------------------------------------------------------------
+  sr_wrong_index_r3_dup_r1:
+    kind: sr_wrong_index
+    nodes: [r3]
+    wrong_index: 1
+
+  sr_wrong_index_r8_dup_r4:
+    kind: sr_wrong_index
+    nodes: [r8]
+    wrong_index: 4
+    
+  sr_wrong_index_r4_out_of_srgb:
+    kind: sr_wrong_index
+    nodes: [r4]
+    wrong_index: 16004     # outside SRGB 16000..23999 range
+
+  # -------------------------------------------------------------------------
+  # 3. TI-LFA disabled on a single interface
+  # -------------------------------------------------------------------------
+  tilfa_iface_disabled_r1_eth0:
+    kind: tilfa_interface_disabled
+    node: r1
+    interface: eth0
+
+  tilfa_iface_disabled_r3_eth0:
+    kind: tilfa_interface_disabled
+    node: r3
+    interface: eth0
+
+  tilfa_iface_disabled_r7_eth1:
+    kind: tilfa_interface_disabled
+    node: r7
+    interface: eth1
+
+  # -------------------------------------------------------------------------
+  # 4. Node protection disabled on a node
+  # -------------------------------------------------------------------------
+  tilfa_no_node_protection_r6:
+    kind: tilfa_no_node_protection
+    nodes: [r6]
+
+  tilfa_no_node_protection_r4:
+    kind: tilfa_no_node_protection
+    nodes: [r4]
+
+  tilfa_no_node_protection_r5:
+    kind: tilfa_no_node_protection
+    nodes: [r5]
+
