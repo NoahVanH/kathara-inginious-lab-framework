@@ -6,3 +6,4 @@ labs\bgp-local-pref\build
 labs\fast-reroute-tilfa-sr-mpls\build
 labs\bgp-role\build
 labs\static-ip\build
+labs\bgp-anycast\build
