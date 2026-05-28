@@ -1,0 +1,30 @@
+#!/bin/bash
+
+
+
+
+ip link set dev lo up
+
+ip link set dev eth0 up
+ip -6 addr add 3fff:b7:5d57::2/64 dev eth0
+sysctl -w net.mpls.conf.eth0.input=1
+sysctl -w net.mpls.platform_labels=100000
+sysctl -w net.ipv6.conf.all.forwarding=1
+
+ip link set dev eth1 up
+ip -6 addr add 3fff:da:14b9::2/64 dev eth1
+sysctl -w net.mpls.conf.eth1.input=1
+sysctl -w net.mpls.platform_labels=100000
+sysctl -w net.ipv6.conf.all.forwarding=1
+
+
+
+
+
+
+# with custom image
+#sleep 5
+#su -c "/usr/lib/frr/frrinit.sh start"
+
+# with kathara image
+systemctl start frr

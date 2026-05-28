@@ -1,0 +1,315 @@
+
+lab_inline: |
+  LAB_NAME="bgp_iBGP_ipv6_lab"
+  
+  LAB_AUTHOR="Noah Van Horenbeke"
+  as1_r1[ipv6]="true"
+  as1_r1[0]="A"
+  as1_r1[1]="G"
+  as1_r1[2]="H"
+  as1_r1[image]="kathara/frr"
+
+  as4_r2[ipv6]="true"
+  as4_r2[0]="B"
+  as4_r2[1]="F"
+  as4_r2[2]="K"
+  as4_r2[image]="kathara/frr"
+
+  as4_r3[ipv6]="true"
+  as4_r3[0]="C"
+  as4_r3[1]="K"
+  as4_r3[image]="kathara/frr"
+
+  as1_r4[ipv6]="true"
+  as1_r4[0]="C"
+  as1_r4[1]="G"
+  as1_r4[2]="J"
+  as1_r4[image]="kathara/frr"
+
+  as1_r5[ipv6]="true"
+  as1_r5[0]="B"
+  as1_r5[1]="I"
+  as1_r5[2]="J"
+  as1_r5[image]="kathara/frr"
+
+  as1_r6[ipv6]="true"
+  as1_r6[0]="H"
+  as1_r6[1]="I"
+  as1_r6[image]="kathara/frr"
+
+  as3_r8[ipv6]="true"
+  as3_r8[0]="A"
+  as3_r8[1]="D"
+  as3_r8[image]="kathara/frr"
+
+  as5_r9[ipv6]="true"
+  as5_r9[0]="D"
+  as5_r9[1]="E"
+  as5_r9[image]="kathara/frr"
+
+  as2_d1[ipv6]="true"
+  as2_d1[0]="E"
+  as2_d1[1]="F"
+  as2_d1[image]="kathara/frr"
+
+# You can lower it if you don't care about the reachability 
+# In INGInious it's set to 50s to avoid false negatives due to slow convergence in the emulated environment
+convergence_time: 50
+default_image: kathara/frr
+
+test:
+  requiring_startup:
+    - as1_r1
+    - as4_r2
+    - as4_r3
+    - as1_r4
+    - as1_r5
+    - as1_r6
+    - as3_r8
+    - as5_r9
+    - as2_d1
+    
+  reachability:
+    as1_r1:
+      - 2001:db8:1::4
+      - 2001:db8:1::5
+      - 2001:db8:1::6
+      - 2001:db8:1::8
+
+
+    as1_r6:
+      - 2001:db8:1::1
+      - 2001:db8:1::4
+      - 2001:db8:1::5
+
+    as1_r4:
+      - 2001:db8:1::1
+      - 2001:db8:1::5
+      - 2001:db8:1::6
+      - 2001:db8:1::3
+
+    as1_r5:
+      - 2001:db8:1::1
+      - 2001:db8:1::4
+      - 2001:db8:1::6
+      - 2001:db8:1::2
+
+  ip_mapping:
+    as1_r1:
+      lo: 2001:db8:1::1/128
+      eth0: 2001:db8:18::1/64
+      eth1: 2001:db8:14::1/64
+      eth2: 2001:db8:16::1/64
+
+    as4_r2:
+      lo: 2001:db8:1::2/128
+      eth0: 2001:db8:25::1/64
+      eth1: 2001:db8:2d::1/64
+      eth2: 2001:db8:23::1/64
+
+    as4_r3:
+      lo: 2001:db8:1::3/128
+      eth0: 2001:db8:34::1/64
+      eth1: 2001:db8:23::2/64
+
+    as1_r4:
+      lo: 2001:db8:1::4/128
+      eth0: 2001:db8:34::2/64
+      eth1: 2001:db8:14::2/64
+      eth2: 2001:db8:45::1/64
+
+    as1_r5:
+      lo: 2001:db8:1::5/128
+      eth0: 2001:db8:25::2/64
+      eth1: 2001:db8:56::1/64
+      eth2: 2001:db8:45::2/64
+
+    as1_r6:
+      lo: 2001:db8:1::6/128
+      eth0: 2001:db8:16::2/64
+      eth1: 2001:db8:56::2/64
+
+    as3_r8:
+      lo: 2001:db8:1::8/128
+      eth0: 2001:db8:18::2/64
+      eth1: 2001:db8:89::1/64
+
+    as5_r9:
+      lo: 2001:db8:1::9/128
+      eth0: 2001:db8:89::2/64
+      eth1: 2001:db8:9d::1/64
+
+    as2_d1:
+      lo: 2001:db8:1::10/128
+      eth0: 2001:db8:9d::2/64
+      eth1: 2001:db8:2d::2/64
+
+  daemons:
+    as1_r1: [zebra, bgpd, ospf6d]
+    as4_r2: [zebra, bgpd, ospf6d]
+    as4_r3: [zebra, bgpd, ospf6d]
+    as1_r4: [zebra, bgpd, ospf6d]
+    as1_r5: [zebra, bgpd, ospf6d]
+    as1_r6: [zebra, bgpd, ospf6d]
+    as3_r8: [zebra, bgpd]
+    as5_r9: [zebra, bgpd]
+    as2_d1: [zebra, bgpd]
+
+  protocols:
+    bgpd:
+      networks:
+        as1_r1:
+          - 2001:db8:1::1/128
+        as4_r2:
+          - 2001:db8:1::2/128
+        as4_r3:
+          - 2001:db8:1::3/128
+        as1_r4:
+          - 2001:db8:1::4/128
+        as1_r5:
+          - 2001:db8:1::5/128
+        as3_r8:
+          - 2001:db8:1::8/128
+        as5_r9:
+          - 2001:db8:1::9/128
+        as2_d1:
+          - 2001:db8:1::10/128
+
+
+
+  custom_commands:
+  # show bgp ipv6 summary ==> Check the presence of neighbors + correct AS
+  # show bgp ipv6 unicast json, nexthops ==> Check the presence of remote prefixes (+ correct next-hop to reach it)
+    as1_r1:
+      
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:18::2\s+4\s+3\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::4\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::5\s+4\s+1\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::9/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::10/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::2/128".*"valid":true'
+
+    as1_r6:
+    # Tester que r6 passe bien par r5 pour atteindre d1
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::10/128".*"nexthops":\[\{"ip":"2001:db8:1::5"'
+
+
+    as4_r2:
+      # Vérification des voisins BGP + bon AS
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:25::2\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:2d::2\s+4\s+2\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::3\s+4\s+4\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::8/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::9/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::1/128".*"valid":true'
+
+    as4_r3:
+      # Vérification des voisins BGP + bon AS
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:34::2\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::2\s+4\s+4\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::8/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::10/128".*"valid":true'
+
+    as1_r4:
+      # Vérification des voisins BGP + bon AS
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:34::1\s+4\s+4\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::1\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::5\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::6\s+4\s+1\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::2/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::10/128".*"valid":true'
+
+
+    as1_r5:
+      # Vérification des voisins BGP + bon AS
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:25::1\s+4\s+4\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::1\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::4\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:1::6\s+4\s+1\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::10/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::9/128".*"valid":true'
+
+    as3_r8:
+      # Vérification des voisins BGP + bon AS
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:18::1\s+4\s+1\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:89::2\s+4\s+5\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::10/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::2/128".*"valid":true'
+
+
+    as5_r9:
+      # Vérification des voisins BGP + bon AS
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:89::1\s+4\s+3\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:9d::2\s+4\s+2\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::1/128".*"valid":true'
+      
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::2/128".*"valid":true'
+
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::10/128".*"valid":true'
+
+    as2_d1:
+      # Vérification des voisins BGP + bon AS
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:9d::1\s+4\s+5\s+'
+      - command: 'vtysh -c "show bgp ipv6 summary"'
+        regex_match: '2001:db8:2d::1\s+4\s+4\s+'
+
+      # Présence de préfixes distants
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::8/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::1/128".*"valid":true'
+      - command: 'vtysh -c "show bgp ipv6 unicast json"'
+        regex_match: '"2001:db8:1::5/128".*"valid":true'

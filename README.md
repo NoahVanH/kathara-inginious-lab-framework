@@ -49,6 +49,7 @@ kathara-inginious-lab-framework/
         │   └── dynamic/       # Jinja2 templates
         ├── variation_model/   # Abstract lab model 
         ├── scripts/           # Generation scripts
+        ├── correction/        # Lab without errors, ready to start with tests
         └── build/             # Generated output (git-ignored)
 ```
 

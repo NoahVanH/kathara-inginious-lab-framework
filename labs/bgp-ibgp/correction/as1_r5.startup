@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+ip link set dev lo up
+ip -6 addr add 2001:db8:1::5/128 dev lo
+
+ip link set dev eth0 up
+ip -6 addr add 2001:db8:25::2/64 dev eth0
+
+ip link set dev eth1 up
+ip -6 addr add 2001:db8:56::1/64 dev eth1
+
+ip link set dev eth2 up
+ip -6 addr add 2001:db8:45::2/64 dev eth2
+
+
+
+
+
+
+
+systemctl start frr

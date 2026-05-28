@@ -1,0 +1,270 @@
+labs_path: ../create_lab.py
+convergence_time: 60
+default_image: kathara/frr
+structure: lab.conf
+
+lab_inline: |
+  LAB_NAME="ospf_single_area_lab"
+  LAB_AUTHOR="Noah Van Horenbeke"
+
+  r1[ipv6]="true"
+  r1[0]="A"
+  r1[1]="C"
+  r1[image]="kathara/frr"
+
+  r2[ipv6]="true"
+  r2[0]="A"
+  r2[1]="D"
+  r2[image]="kathara/frr"
+
+  r3[ipv6]="true"
+  r3[0]="A"
+  r3[1]="B"
+  r3[image]="kathara/frr"
+
+  r4[ipv6]="true"
+  r4[0]="B"
+  r4[1]="C"
+  r4[image]="kathara/frr"
+
+  r5[ipv6]="true"
+  r5[0]="C"
+  r5[1]="D"
+  r5[image]="kathara/frr"
+
+
+test:
+
+  requiring_startup:
+    - r1
+    - r2
+    - r3
+    - r4
+    - r5
+
+  ip_mapping:
+    r1:
+      lo:   3fff:100::1/128
+      eth0: 3fff:16:2fa0::1/64
+      eth1: 3fff:d1:1f3a::1/64
+
+    r2:
+      lo:   3fff:100::2/128
+      eth0: 3fff:16:2fa0::2/64
+      eth1: 3fff:ab:bed6::1/64
+
+    r3:
+      lo:   3fff:100::3/128
+      eth0: 3fff:16:2fa0::3/64
+      eth1: 3fff:39:2ca3::1/64
+
+    r4:
+      lo:   3fff:100::4/128
+      eth0: 3fff:39:2ca3::2/64
+      eth1: 3fff:d1:1f3a::2/64
+
+    r5:
+      lo:   3fff:100::5/128
+      eth0: 3fff:d1:1f3a::3/64
+      eth1: 3fff:ab:bed6::2/64
+
+  daemons:
+    r1: [zebra, ospf6d]
+    r2: [zebra, ospf6d]
+    r3: [zebra, ospf6d]
+    r4: [zebra, ospf6d]
+    r5: [zebra, ospf6d]
+
+  custom_commands:
+
+    # =========================
+    # R1 — voisins r2, r3 (sur A) et r4, r5 (sur C)
+    # Chemins attendus : r2/r3/r4 via eth0, r5 via eth1
+    # =========================
+    r1:
+      # Adjacences OSPF Full
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '2\.2\.2\.2\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '3\.3\.3\.3\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '4\.4\.4\.4\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '5\.5\.5\.5\s+\d+\s+\S+\s+Full'
+
+      # Router-id correct
+      - command: 'vtysh -c "show running-config"'
+        regex_match: 'router-id 1\.1\.1\.1'
+
+      # Interfaces UP
+      - command: 'ip -6 addr show eth0'
+        regex_match: 'state UP'
+      - command: 'ip -6 addr show eth1'
+        regex_match: 'state UP'
+
+
+      # CHEMINS SPF ATTENDUS
+      # r2 loopback : via eth0 (segment A)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:2\/128\s+\S+\s+eth0'
+      # r3 loopback : via eth0 (segment A)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:3\/128\s+\S+\s+eth0'
+      # r4 loopback : via eth0 (passe par r3 puis B)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:4\/128\s+\S+\s+eth1'
+      # r5 loopback : via eth1 (segment C)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:5\/128\s+\S+\s+eth1'
+
+    # =========================
+    # R2 — voisins r1, r3 (sur A) et r5 (sur D)
+    # Chemins attendus : r1/r3/r4/r5 via eth0
+    # =========================
+    r2:
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '1\.1\.1\.1\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '3\.3\.3\.3\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '5\.5\.5\.5\s+\d+\s+\S+\s+Full'
+
+      - command: 'vtysh -c "show running-config"'
+        regex_match: 'router-id 2\.2\.2\.2'
+
+      - command: 'ip -6 addr show eth0'
+        regex_match: 'state UP'
+      - command: 'ip -6 addr show eth1'
+        regex_match: 'state UP'
+
+
+      # CHEMINS SPF ATTENDUS
+      # r1 loopback : via eth0 (segment A)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:1\/128\s+\S+\s+eth0'
+      # r3 loopback : via eth0 (segment A)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:3\/128\s+\S+\s+eth0'
+      # r4 loopback : via eth0 (passe par r3 puis B)
+      # NOTE : si wrong_cost_r2_eth0 (cout 46) est injectee, le chemin bascule via eth1
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:4\/128\s+\S+\s+eth0'
+      # r5 loopback : via eth0 (passe par r3 et r4)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:5\/128\s+\S+\s+eth1'
+
+    # =========================
+    # R3 — voisins r1, r2 (sur A) et r4 (sur B)
+    # Chemins attendus : r1/r2 via eth0, r4/r5 via eth1
+    # =========================
+    r3:
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '1\.1\.1\.1\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '2\.2\.2\.2\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '4\.4\.4\.4\s+\d+\s+\S+\s+Full'
+
+      - command: 'vtysh -c "show running-config"'
+        regex_match: 'router-id 3\.3\.3\.3'
+
+      # eth1 NE doit PAS etre passive (detection r3_eth1_passive)
+      - command: 'vtysh -c "show ipv6 ospf6 interface eth1"'
+        regex_match: 'Hello \d+'
+
+      - command: 'ip -6 addr show eth0'
+        regex_match: 'state UP'
+      - command: 'ip -6 addr show eth1'
+        regex_match: 'state UP'
+
+
+
+      # CHEMINS SPF ATTENDUS
+      # r1 loopback : via eth0 (segment A)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:1\/128\s+\S+\s+eth0'
+      # r2 loopback : via eth0 (segment A)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:2\/128\s+\S+\s+eth0'
+      # r4 loopback : via eth1 (segment B)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:4\/128\s+\S+\s+eth1'
+
+
+    # =========================
+    # R4 — voisins r3 (sur B) et r1, r5 (sur C)
+    # Chemins attendus : r2/r3 via eth0, r1/r5 via eth1
+    # =========================
+    r4:
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '1\.1\.1\.1\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '3\.3\.3\.3\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '5\.5\.5\.5\s+\d+\s+\S+\s+Full'
+
+      - command: 'vtysh -c "show running-config"'
+        regex_match: 'router-id 4\.4\.4\.4'
+
+      # Interfaces UP (detection r4_eth0_down)
+      - command: 'ip -6 addr show eth0'
+        regex_match: 'state UP'
+      - command: 'ip -6 addr show eth1'
+        regex_match: 'state UP'
+
+
+
+      # CHEMINS SPF ATTENDUS
+      # r1 loopback : via eth1 (segment C)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:1\/128\s+\S+\s+eth1'
+      # r2 loopback : via eth0 (segment B vers r3 puis A)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:2\/128\s+\S+\s+eth0'
+      # r3 loopback : via eth0 (segment B)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:3\/128\s+\S+\s+eth0'
+      # r5 loopback : via eth1 (segment C)
+      # NOTE : si wrong_cost_r4_eth1 (cout 32) est injectee, le chemin pourrait basculer
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:5\/128\s+\S+\s+eth1'
+
+    # =========================
+    # R5 — voisins r1, r4 (sur C) et r2 (sur D)
+    # Chemins attendus : r1/r3/r4 via eth0, r2 via eth1
+    # =========================
+    r5:
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '1\.1\.1\.1\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '2\.2\.2\.2\s+\d+\s+\S+\s+Full'
+      - command: 'vtysh -c "show ipv6 ospf6 neighbor"'
+        regex_match: '4\.4\.4\.4\s+\d+\s+\S+\s+Full'
+
+      - command: 'vtysh -c "show running-config"'
+        regex_match: 'router-id 5\.5\.5\.5'
+
+      # eth0 NE doit PAS etre passive (detection r5_eth0_passive)
+      - command: 'vtysh -c "show ipv6 ospf6 interface eth0"'
+        regex_match: 'Hello \d+'
+
+      - command: 'ip -6 addr show eth0'
+        regex_match: 'state UP'
+      - command: 'ip -6 addr show eth1'
+        regex_match: 'state UP'
+
+
+
+      # CHEMINS SPF ATTENDUS
+      # r1 loopback : via eth0 (segment C)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:1\/128\s+\S+\s+eth0'
+      # r2 loopback : via eth1 (segment D)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:2\/128\s+\S+\s+eth1'
+      # r3 loopback : via eth0 (passe par r4 puis B)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:3\/128\s+\S+\s+eth0'
+      # r4 loopback : via eth0 (segment C)
+      - command: 'vtysh -c "show ipv6 ospf6 route"'
+        regex_match: '\*N IA\s+3fff\:100\:\:4\/128\s+\S+\s+eth0'
