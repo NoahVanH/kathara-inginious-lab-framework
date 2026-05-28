@@ -1,0 +1,113 @@
+.. admonition:: primary
+   :title: 🎯 Objectifs pédagogiques
+
+   Cet exercice vous permettra de mettre en pratique les compétences suivantes :
+
+   * **Routage statique** : configuration manuelle des tables de routage
+
+   * **Réseaux** : configuration d'interfaces, assignation d'adresses IP, compréhension des domaines de collision
+
+   * **Débogage** : inspection pas à pas des containers pour identifier et corriger les erreurs
+
+Présentation du laboratoire
+=============================
+
+.. image:: /course/tfe-vanhorenbeke/tp1/simpleLab.svg
+   :alt: Lab topology
+   :align: center
+   :width: 50%
+
+Attention, le premier 0 de l'adresse IP peut être différent en fonction de l'archive qui vous a été assignée.
+
+Cette image représente la topologie **correcte** (sans les erreurs) que vous devez obtenir après débogage.
+
+Ce laboratoire contient une infrastructure réseau préconfigurée, mais **plusieurs erreurs volontaires** y ont été introduites. À vous de les identifier et de les corriger !
+
+
+📥 **Télécharger l'archive du labo**
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. admonition:: primary
+   :title: Télécharger l'archive de départ
+
+     Pour **commencer l'exercice**, vous devez télécharger l'archive. Elle contient la configuration de base ainsi que les erreurs à corriger.
+
+    .. raw:: html
+
+        <script>
+          const NB_VARIANTS = 20;
+         const rand = input["@random"][0];
+         const index = Math.floor(rand * NB_VARIANTS);
+            const selected = `variant_${index}.zip`;
+
+         const url = "https://inginious.info.ucl.ac.be/course/tfe-vanhorenbeke/tp1/variations/" + selected;
+
+         document.write(`<a href="${url}">Télécharger l'archive (${selected})</a>`);
+     </script>
+
+.. [1] Ce ZIP vous donne un score de ~80%, l'objectif est d'obtenir 100%.
+
+
+
+Démarche recommandée
+======================
+
+1.  **Explorez la topologie**
+
+    Examinez le fichier ``lab.conf`` pour comprendre quels containers sont définis et comment ils sont reliés. Aidez-vous de l'image ci-dessus pour visualiser les connexions.
+
+2.  **Connectez-vous aux containers**
+
+    Utilisez Kathara pour démarrer le lab et vous connecter à chaque routeur/container :
+
+    .. code:: bash
+
+       cd ./variant_X
+
+       # Lancer le labo, ouvre les terminaux automatiquement
+       kathara lstart
+
+       # Ouvrir un terminal
+       kathara connect [nom_du_noeud]
+
+       # Supprimer les containers
+       kathara wipe
+
+3.  **Inspectez la configuration**
+
+    Inspecter les interfaces, les adresses, la connectivité (ping) ...
+
+4.  **Corrigez les erreurs**
+
+    📌 **Règles importantes :**
+
+        - ❌ **Ne modifiez pas** le fichier ``lab.conf`` (il est correct et ne contient aucune erreur)
+
+        - ❌ **Ne créez pas** de nouveaux fichiers (toutes les corrections se font dans les fichiers existants)
+
+        - ✅ **Respectez** l'arborescence exacte de l'archive fournie (les chemins relatifs sont importants)
+
+    Modifiez les fichiers ``.startup`` **et** reportez ces modifications dans les fichiers correspondants sur votre machine hôte (ceux qui seront ré-archivés).
+
+5.  **Validez votre correction en local**
+
+    .. code:: bash
+
+       cd ./variant_X
+       python3 -m kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+       # ou
+       kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+
+6.  **Soumettez votre solution**
+
+    Une fois tous les tests passant en local (penser à en ajouter), compressez l'intégralité du dossier ``variant_X`` au format `.zip` et déposez-le ci-dessous.
+
+.. admonition:: primary
+   :title: 🔗 Liens utiles
+
+   - **Wiki Networking Configuration** : `Exemples commandes <https://wiki.archlinux.org/title/Network_configuration>`_
+
+   - **Kathara** : `Documentation <https://github.com/KatharaFramework/Kathara/wiki>`_ | `Installation <https://github.com/KatharaFramework/Kathara/wiki/Installation-Guides>`_ | `Commandes <https://www.kathara.org/man-pages/kathara.1.html>`_
+
+
+

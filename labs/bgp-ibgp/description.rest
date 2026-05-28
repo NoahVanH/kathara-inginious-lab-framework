@@ -1,0 +1,148 @@
+.. admonition:: primary
+   :title: 🎯 Learning Objectives
+
+   This lab will allow you to:
+
+
+   * **Diagnose**: use vtysh to inspect **iBGP configuration**.
+   * **Fix**: identify and resolve configuration errors
+
+Lab Presentation
+=============================
+
+.. image:: /course/tfe-vanhorenbeke/ibgp/iBGP.drawio.png
+   :alt: Lab network topology
+   :align: center
+   :width: 35%
+
+This image represents the **correct** topology (without errors) that you should obtain after debugging.
+
+Within each Autonomous System (AS), routers should be configured in a full-mesh iBGP.
+
+Each router should advertises its loopback address as a BGP prefix.
+
+This lab contains a preconfigured network infrastructure, but **several intentional errors** have been introduced. It's up to you to identify and fix them!
+
+
+
+
+
+📥 **Download the Base Lab**
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. admonition:: primary
+   :title: Download the starting archive
+
+     To **begin the exercise**, you need to download the archive. It contains the base configuration with errors to fix.
+
+    .. raw:: html
+
+        <script>
+          const NB_VARIANTS = 99;
+         const rand = input["@random"][0];
+         const index = Math.floor(rand * NB_VARIANTS);
+            const selected = `variant_${index}.zip`;
+
+         const url = "https://inginious.info.ucl.ac.be/course/tfe-vanhorenbeke/ibgp/variations/" + selected;
+
+         document.write(`<a href="${url}">Download your lab (${selected})</a>`);
+     </script>
+
+.. [1] This file gives a score of ~80%, the goal is to reach 100%.
+
+Diagnostic Tools
+=====================
+
+**vtysh** is the unified command-line interface of FRRouting (the routing software used in the containers).
+
+It allows you to configure and inspect all routing protocols (BGP, OSPF, RIP, etc.) from a single interface.
+
+Useful commands for diagnosing BGP:
+
+.. code:: bash
+
+   # Access vtysh on r5
+   root@r5:/# vtysh
+   r5#
+
+   # All following commands are run inside vtysh
+
+   # Displays the active BGP configuration
+   show running-config
+
+   # Display BGP neighbor summary (session status)
+   show bgp ipv6 summary
+
+   # Display the complete BGP routing table (learned routes)
+   show bgp ipv6 unicast
+
+   # Display routes specific to a neighbor
+   show bgp ipv6 neighbors <IP> routes
+
+
+.. admonition:: note
+   :class: note
+
+   The ``show running-config`` command allows you to display the active BGP configuration. This is an excellent way to check if your configuration file is properly loaded (without syntax errors).
+
+Recommended Approach
+======================
+
+1.  **Explore the topology**
+
+    Examine the ``lab.conf`` file to understand which containers are defined and how they are connected. Use the image above to visualize the connections.
+
+2.  **Connect to containers**
+
+    Use Kathara to start the lab and connect to each router/container:
+
+    .. code:: bash
+
+       cd ./variant_X
+
+       # Start the lab, automatically opens terminals
+       kathara lstart
+
+       # Open a terminal
+       kathara connect [node_name]
+
+       # Remove containers
+       kathara wipe
+
+3.  **Inspect the configuration**
+
+4.  **Fix the errors**
+
+    📌 **Important Rules:**
+
+    - ❌ **Do not modify** the ``lab.conf`` file (it is correct and contains no errors)
+
+    - ❌ **Do not create** new files (all corrections are made in existing files)
+
+    - ✅ **Respect** the exact folder structure of the provided archive (relative paths are important)
+
+    Modify the files **and** report these changes to the corresponding files on your host machine (those that will be re-archived).
+
+
+5.  **Validate your fixes locally**
+
+    .. code:: bash
+
+       cd ./variant
+       python3 -m kathara_lab_checker --config correction.yaml --no-cache --lab .
+       # or
+       kathara_lab_checker --config correction.yaml --no-cache --lab .
+
+6.  **Submit your solution**
+
+    Once all tests pass locally (remember to add more), compress the entire ``variant_X`` folder into a `.zip` file and upload it below.
+
+.. admonition:: primary
+   :title: 🔗 Useful Links
+
+   - **Kathara**: `Documentation <https://github.com/KatharaFramework/Kathara/wiki>`_ | `Installation <https://github.com/KatharaFramework/Kathara/wiki/Installation-Guides>`_ | `Commands <https://www.kathara.org/man-pages/kathara.1.html>`_
+
+   - **FRRouting Documentation**: `BGP Commands <https://docs.frrouting.org/en/latest/bgp.html#bgp-router-configuration>`_
+
+
+

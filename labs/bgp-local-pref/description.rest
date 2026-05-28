@@ -1,0 +1,167 @@
+.. admonition:: note
+   :title: 🎯 Learning Objectives
+
+   This lab will allow you to:
+
+
+   * **Diagnose**: use vtysh to inspect **peering relationship** between AS.
+   * **Fix**: identify and resolve configuration errors
+
+   In this lab, you will need to verify and enforce the following **classical interdomain routing policies**:
+
+   * Routes learned from a **customer** must be **exported to all neighbors** (customers, peers, and providers).
+   * Routes learned from a **peer** or a **provider** must be **exported only to customers**.
+
+   In addition, you must correctly configure **local preference** to ensure proper path selection:
+
+   * Routes learned from a **customer** are **preferred** over all others.
+   * Routes learned from a **peer** are preferred over routes learned from a **provider**.
+
+Lab Presentation
+=============================
+
+.. image:: /course/tfe-vanhorenbeke/peering-relationship/relationship-topo.png
+   :alt: Lab network topology
+   :align: center
+   :width: 35%
+
+
+
+This image represents the **correct** topology (without errors) that you should obtain after debugging [#]_.
+
+
+
+Each router should advertises its loopback address as a BGP prefix.
+
+This lab contains a preconfigured network infrastructure, but **several intentional errors** have been introduced. It's up to you to identify and fix them!
+
+
+
+
+
+📥 **Download the Base Lab**
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. admonition:: primary
+   :title: Download the starting archive
+
+     To **begin the exercise**, you need to download the archive [#]_. It contains the base configuration with errors to fix.
+
+    .. raw:: html
+
+        <script>
+          const NB_VARIANTS = 112;
+         const rand = input["@random"][0];
+         const index = Math.floor(rand * NB_VARIANTS);
+            const selected = `variant_${index}.zip`;
+
+         const url = "https://inginious.info.ucl.ac.be/course/tfe-vanhorenbeke/peering-relationship/variations/" + selected;
+
+         document.write(`<a href="${url}">Download your lab (${selected})</a>`);
+     </script>
+
+
+
+
+
+Diagnostic Tools
+=====================
+
+**vtysh** is the unified command-line interface of FRRouting (the routing software used in the containers).
+
+It allows you to configure and inspect all routing protocols (BGP, OSPF, RIP, etc.) from a single interface.
+
+Useful commands for diagnosing BGP:
+
+.. code:: bash
+
+   # Access vtysh on r5
+   root@r5:/# vtysh
+   r5#
+
+   # All following commands are run inside vtysh
+
+   # Displays the active BGP configuration
+   show running-config
+
+   # Display BGP neighbor summary (session status, local pref values...)
+   show bgp ipv6 summary
+
+   # Display the complete BGP routing table (learned routes)
+   show bgp ipv6 unicast
+
+   # Display routes advertised to the neighbors
+   show bgp neighbors <IP> advertised-routes
+
+   # Display BGP communities
+   show bgp ipv6 detail
+
+
+.. admonition:: note
+   :class: note
+
+   The ``show bgp neighbors ...`` command lets you view useful information. Try experimenting with its various options. It's a great way to check which routes are coming in and going out.
+
+Recommended Approach
+======================
+
+1.  **Explore the topology**
+
+    Examine the ``lab.conf`` file to understand which containers are defined and how they are connected. Use the image above to visualize the connections.
+
+2.  **Connect to containers**
+
+    Use Kathara to start the lab and connect to each router/container:
+
+    .. code:: bash
+
+       cd ./variant_X
+
+       # Start the lab, automatically opens terminals
+       kathara lstart
+
+       # Open a terminal
+       kathara connect [node_name]
+
+       # Remove containers
+       kathara wipe
+
+3.  **Inspect the configuration**
+
+4.  **Fix the errors**
+
+    📌 **Important Rules:**
+
+    - ❌ **Do not modify** the ``lab.conf`` file (it is correct and contains no errors)
+
+    - ❌ **Do not create** new files (all corrections are made in existing files)
+
+    - ✅ **Respect** the exact folder structure of the provided archive (relative paths are important)
+
+    Modify the files **and** report these changes to the corresponding files on your host machine (those that will be re-archived).
+
+
+5.  **Validate your fixes locally**
+
+    .. code:: bash
+
+       cd ./variant
+       python3 -m kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+       # or
+       kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+
+6.  **Submit your solution**
+
+    Once all tests pass locally (remember to add more), compress the entire ``variant_X`` folder into a `.zip` file and upload it below.
+
+.. admonition:: primary
+   :title: 🔗 Useful Links
+
+   - **Kathara**: `Documentation <https://github.com/KatharaFramework/Kathara/wiki>`_ | `Installation <https://github.com/KatharaFramework/Kathara/wiki/Installation-Guides>`_ | `Commands <https://www.kathara.org/man-pages/kathara.1.html>`_
+
+   - **FRRouting Documentation**: `BGP Commands <https://docs.frrouting.org/en/latest/bgp.html#bgp-router-configuration>`_
+   - **Computer Network online syllabus**: `BGP example <https://4ed.computer-networking.info/syllabus/default/networks/bgp.html>`_
+
+.. [#] This topology is taken from the Computer Networks online syllabus
+.. [#] This file gives an high score, the goal is to reach 100%.
+

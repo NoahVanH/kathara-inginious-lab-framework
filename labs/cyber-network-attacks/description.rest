@@ -1,0 +1,99 @@
+.. admonition:: note
+   :title: 🎯 Learning Objectives
+
+   This lab will allow you to:
+
+   * **Understand**: the mechanics of three classic network attacks: **SYN Flood**, **TCP Port Scan**, and **DNS Reflection/Amplification**.
+   * **Implement**: each attack using Python and Scapy on a virtualized network topology.
+   * **Capture**: network traffic and provide evidence that each attack was successfully carried out.
+
+Your goal is to implement the three following attacks from the **attacker** machine, while capturing the resulting traffic on the **target** machine.
+
+Lab Presentation
+=============================
+
+This lab takes place in a small virtualized network composed of four machines:
+
+* ``attacker`` — the machine from which you will launch the attacks.
+* ``target`` — the victim machine receiving the attacks.
+* ``dns`` — a simple DNS server used in the reflection attack.
+* ``monitor`` — a passive observer connected to the network, used to capture traffic.
+
+.. image:: /course/tfe-vanhorenbeke/network-attacks/topology.drawio.svg
+   :alt: Lab network topology
+   :align: center
+   :width: 30%
+
+
+
+📥 Download the Base Lab
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. admonition:: primary
+   :title: Download the lab archive
+
+   To **begin the exercise**, download the archive below. It contains the full network topology and a code template to help you implement the attacks.
+
+   .. raw:: html
+
+      <a href="https://inginious.info.ucl.ac.be/course/tfe-vanhorenbeke/network-attacks/lab-network-attacks.zip">
+        Download the "lab-network-attacks" archive
+      </a>
+
+Launching the Lab (Kathará)
+========================================
+
+This lab uses `Kathará <https://www.kathara.org/>`_, a container-based network emulator. You do not need to know how it works internally. Here are the only commands you need:
+
+.. code-block:: bash
+
+   # Start all containers — run this at the root of the extracted archive
+   kathara lstart
+
+   # Open a terminal on a specific machine (attacker, target, dns, monitor)
+   kathara connect <machine>
+
+   # Stop and destroy all containers when you are done
+   kathara wipe
+
+
+
+For more details, refer to the `official Kathará documentation <https://www.kathara.org/man-pages/kathara.1.html>`_.
+
+📁 Shared Folder & Attack Template
+===============================================
+
+A ``shared/`` folder is automatically mounted on all containers. It contains ``attacks.py``, a Python template to help you implement the three attacks using Scapy.
+
+
+   Any modification to files in ``/shared`` is **immediately reflected** inside the containers, and any file written inside a container under ``/shared`` is **immediately accessible** from your host machine.
+
+   You don't need to restart the lab when you modify ``shared/attacks.py``.
+
+Step-by-Step Workflow
+=============================================
+
+**Step 1 — Answer the preliminary questions.**
+Before the main task, answer a set of questions about the topology and the attacks. You must pass them all to unlock the submission form.
+
+**Step 2 — Implement & run the attacks.** [#]_
+Complete the three functions in ``shared/attacks.py``, then on two separate terminals:
+
+.. code-block:: bash
+
+   # On the target: start capturing traffic BEFORE launching the attacks
+   kathara connect target
+   tcpdump -i eth0 -w /shared/capture.pcap
+
+   #On the attacker: run your completed attack script
+   kathara connect attacker
+   python3 /shared/attacks.py
+
+   # Once all attacks are done, stop the capture
+
+**Step 3 — Submit** ``capture.pcap`` **using the next task**.
+The grader will automatically verify that all three attacks are present and generate a detailed report.
+
+
+
+.. [#] The port scan should complete in under 5 minutes. Avoid scanning all 65535 ports.

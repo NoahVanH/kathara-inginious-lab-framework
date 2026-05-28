@@ -1,0 +1,136 @@
+.. admonition:: primary
+   :title: 🎯 Learning Objectives
+
+   This lab will allow you to:
+
+   * **Diagnose**: use **vtysh** to inspect **OSPFv3 adjacencies** and identify why neighbors fail to reach the **Full** state.
+   * **Fix**: identify and resolve configuration errors related to **interfaces, MTU, passive mode, router-id, and IPv6 addressing**.
+
+   In this lab, you will need to verify and enforce the following **intradomain routing property**:
+
+   * All routers must form **FULL OSPFv3 adjacencies** with each of their expected neighbors on every shared segment.
+
+
+
+In this lab, **all OSPFv3 interface costs are uniformly set to 10** on every link.
+Cost is therefore **not relevant** here: the only question you must answer is whether each pair of expected neighbors reaches the **Full** state.
+
+
+Lab Presentation
+=============================
+
+.. image:: /course/tfe-vanhorenbeke/ospf-single-area/topo.svg
+   :alt: Lab network topology
+   :align: center
+   :width: 60%
+
+This image represents the **correct** topology (without errors) that you should obtain after debugging.
+
+.. admonition:: note
+   :class: note
+
+   **About OSPF costs:** Do **not** modify costs. They are not the source of any problem here.
+
+
+This lab contains a preconfigured network infrastructure, but **several intentional errors** have been introduced.
+Your goal is to identify and fix them so that **every expected neighbor relationship reaches the Full state**.
+
+
+
+
+
+📥 **Download the Base Lab**
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. admonition:: primary
+   :title: Download the starting archive
+
+     To **begin the exercise**, you need to download the archive. It contains the base configuration with errors to fix.
+
+    .. raw:: html
+
+        <script>
+          const NB_VARIANTS = 72;
+          const rand = input["@random"][0];
+          const index = Math.floor(rand * NB_VARIANTS);
+          const selected = `variant_${index}.zip`;
+          const url = "https://inginious.info.ucl.ac.be/course/tfe-vanhorenbeke/ospf-single-area/variations/" + selected;
+          document.write(`<a href="${url}">Download your lab (${selected})</a>`);
+        </script>
+
+Diagnostic Tools
+=====================
+
+**vtysh** is the unified command-line interface of FRRouting.
+
+Useful commands for diagnosing OSPFv3 adjacencies:
+
+.. code:: bash
+
+   # Access vtysh
+   root@r1:/# vtysh
+   r1#
+
+   # Show running configuration (router-id, interfaces, passive, mtu)
+   show running-config
+
+   # Show OSPFv3 neighbors and their adjacency state
+   show ipv6 ospf6 neighbor
+
+   # Inspect interface-level OSPF state (passive, hello timers, ifmtu, cost)
+   show ipv6 ospf6 interface <ifname>
+
+   # Inspect IPv6 addressing and link state of an interface
+   show interface <ifname>
+
+
+
+Recommended Approach
+======================
+
+1.  **Explore the topology**
+
+    Examine the ``lab.conf`` file to understand connectivity and map interfaces to links.
+
+2.  **Connect to containers**
+
+    .. code:: bash
+
+       cd ./variant_X
+       kathara lstart
+       kathara connect [node_name]
+       kathara wipe
+
+3.  **Inspect OSPF adjacency state on every router**
+
+4.  **Identify which links/interfaces fail to reach Full and why**
+
+
+5.  **Fix the errors**
+
+    📌 **Important Rules:**
+
+    - ❌ Do not modify ``lab.conf``
+    - ❌ Do not create new files
+    - ❌ Do not modify OSPF costs (they are uniform and not under test)
+    - ✅ Only fix existing configuration files
+
+6.  **Validate your fixes locally**
+
+    .. code:: bash
+
+       cd ./variant
+       kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+       or
+       python3 -m kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+
+7.  **Submit your solution**
+
+    Compress the corrected ``variant_X`` folder and upload it.
+
+.. admonition:: primary
+   :title: 🔗 Useful Links
+
+   - **Kathara**: https://github.com/KatharaFramework/Kathara/wiki
+   - **FRRouting Documentation (OSPFv3)**: https://docs.frrouting.org/en/latest/ospf6d.html
+   - **RFC 5340 (OSPF for IPv6)**: https://datatracker.ietf.org/doc/rfc5340/

@@ -1,0 +1,222 @@
+.. admonition:: primary
+   :title: 🎯 Learning Objectives
+
+   This lab will allow you to:
+
+   * **Configure** IS-IS Segment Routing with MPLS (SR-MPLS) on an 8-router topology.
+   * **Understand** why classic LFA fails to protect all links and how TI-LFA achieves 100% coverage.
+   * **Diagnose** Fast Reroute behavior by reading FRRouting output and MPLS forwarding tables.
+   * **Fix** intentional configuration errors that break Segment Routing and protection.
+
+
+
+Lab Presentation
+=============================
+
+.. image:: /course/tfe-vanhorenbeke/fast-reroute/topo.svg
+   :alt: Lab network topology
+   :align: center
+   :width: 65%
+
+The topology above consists of **8 routers** (R1 to R8) running IS-IS level-1 with SR-MPLS.
+All links are point-to-point.
+
+
+Each router has a unique **prefix-SID** assigned to its loopback /128 address,
+advertised into IS-IS with a segment index equal to the router number
+(e.g. R1 → index 1, label 16001).
+
+
+
+Your lab variant contains **intentional configuration errors**.
+Your goal is to identify and fix them so that:
+
+* All IS-IS adjacencies are **Up**
+* Segment Routing is correctly configured (valid prefix-SIDs, correct SRGB)
+* TI-LFA reports **100% protection coverage** on all routers
+* Backup paths and MPLS label operations are correctly installed
+
+
+📥 **Download the Base Lab**
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. admonition:: primary
+   :title: Download the starting archive
+
+   To **begin the exercise**, download your assigned variant archive.
+
+   .. raw:: html
+
+       <script>
+         const NB_VARIANTS = 144;
+         const rand = input["@random"][0];
+         const index = Math.floor(rand * NB_VARIANTS);
+         const selected = `variant_${index}.zip`;
+         const url = "https://inginious.info.ucl.ac.be/course/tfe-vanhorenbeke/fast-reroute/variations/" + selected;
+         document.write(`<a href="${url}">Download your lab (${selected})</a>`);
+       </script>
+
+
+⚙️ Kernel Setup (required before starting)
+============================================
+
+SR-MPLS requires MPLS support to be enabled in the Linux kernel **on your host machine**.
+This is not done automatically. Without it, label operations (Swap, Pop, Push) will not work
+even if FRR is correctly configured.
+
+**Step 1 — Check that the modules are available**
+
+.. code:: bash
+
+   find /lib/modules/$(uname -r) -name "mpls_router*" -o -name "mpls_iptunnel*"
+
+You should see two ``.ko`` or ``.ko.zst`` files. If the output is empty:
+
+.. code:: bash
+
+   sudo apt install linux-modules-extra-$(uname -r)
+
+**Step 2 — Load the modules**
+
+.. code:: bash
+
+   sudo modprobe mpls_router
+   sudo modprobe mpls_iptunnel
+
+   # Verify:
+   lsmod | grep mpls
+   # Expected: mpls_iptunnel and mpls_router both listed
+
+**Step 3 — Set the label table size**
+
+.. code:: bash
+
+   sudo sysctl -w net.mpls.platform_labels=100000
+
+   # Verify:
+   cat /proc/sys/net/mpls/platform_labels   # should print 100000
+
+**Step 4 — Make it permanent across reboots** *(optional but recommended)*
+
+.. code:: bash
+
+   echo -e "mpls_router\nmpls_iptunnel" | sudo tee /etc/modules-load.d/mpls.conf
+   echo "net.mpls.platform_labels=100000"  | sudo tee /etc/sysctl.d/99-mpls.conf
+
+
+Starting the Lab
+=====================
+
+This lab must be started with the ``--privileged`` flag so that MPLS kernel operations
+work correctly inside the containers.
+
+.. code:: bash
+
+   # Start the lab (always use --privileged for this lab)
+   cd ./variant_X
+   sudo kathara lstart --privileged
+
+
+When using ``--privileged``, **container terminals do not open automatically**.
+You will see warnings in the console during startup, this is normal and expected.
+Wait until all containers are started, then connect manually.
+
+
+
+
+Diagnostic Tools
+==================
+
+Once connected to a router via ``kathara connect <node_name>``, use ``vtysh``:
+
+.. code:: bash
+
+   # IS-IS adjacency state
+   show isis neighbor
+
+   # IS-IS topology (are all 8 routers visible?)
+   show isis topology
+
+   # IS-IS database (LSPs — check SR sub-TLVs)
+   show isis database detail
+
+   # Prefix-SID table — primary and backup next-hops
+   show isis route prefix-sid
+
+   # TI-LFA protection coverage
+   show isis fast-reroute summary
+
+   # MPLS forwarding table — Pop / Swap / Push operations
+   show mpls table
+
+   # IPv6 routing table — look for 'b' backup entries
+   show ipv6 route isis
+
+
+
+
+Recommended Approach
+======================
+
+1. **Load the MPLS kernel modules on your host** (see above.)
+
+2. **Start the lab**
+
+   .. code:: bash
+
+      cd ./variant_X
+      sudo kathara lstart --privileged
+
+   Wait for all containers to start. Warnings in the console are normal.
+
+3. **Connect to routers and check IS-IS health first**
+
+   .. code:: bash
+
+      kathara connect r1
+      # then inside:
+      vtysh
+
+
+4. **Check configuration**
+
+
+
+5. **Check TI-LFA coverage**
+
+
+
+6. **Verify MPLS label operations**
+
+
+
+7. **Fix the errors** : important rules:
+
+   - ❌ Do not modify ``lab.conf``
+   - ❌ Do not add or remove routers or links
+   - ✅ Only edit the FRRouting configuration files inside each container
+
+8. **Validate locally before submitting**
+
+
+      Run the checker **without** ``sudo``:
+
+   .. code:: bash
+
+      kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+      # or
+      python3 -m kathara_lab_checker --config correction_student.yaml --no-cache --lab .
+
+9. **Submit**
+
+   Compress the corrected ``variant_X`` folder and upload it.
+
+
+.. admonition:: primary
+   :title: 🔗 Useful Links
+
+   - **Kathara**: https://github.com/KatharaFramework/Kathara/wiki
+   - **FRRouting IS-IS + SR**: https://docs.frrouting.org/en/latest/isisd.html
+   - **RFC 5286 : Loop-Free Alternates**: https://datatracker.ietf.org/doc/rfc5286/
+   - **RFC 9855 : TI-LFA**: https://datatracker.ietf.org/doc/rfc9855/
+   - **MPLS kernel setup**: https://docs.frrouting.org/projects/dev-guide/en/latest/building-frr-for-ubuntu2204.html#add-mpls-kernel-modules

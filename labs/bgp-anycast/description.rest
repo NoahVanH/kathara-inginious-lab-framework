@@ -1,0 +1,138 @@
+.. admonition:: primary
+   :title: 🎯 Learning Objectives
+
+   This lab will allow you to:
+
+   * **Observe** BGP Anycast routing in action where multiple servers share the same IP prefix.
+   * **Understand** how the BGP AS-path length determines which server a client reaches.
+   * **Compare** two modern encrypted DNS protocols: **DoT** (DNS over TLS) and **DoH** (DNS over HTTPS).
+   * **Manipulate** BGP routing to redirect traffic between anycast servers.
+
+Lab Presentation
+=============================
+
+.. image:: /course/tfe-vanhorenbeke/bgp-anycast/topo.svg
+   :alt: Lab network topology
+   :align: center
+   :width: 60%
+
+This lab demonstrates **BGP Anycast** applied to DNS infrastructure.
+
+Both NS1 and NS2 advertise the **same anycast prefix** into BGP.
+
+**NS1** serves DNS over **HTTPS (DoH)**, **NS2** serves DNS over **TLS (DoT)**.
+
+.. admonition:: note
+   :class: note
+
+   Unlike previous labs, **there are no errors to fix here**.
+   The network is fully functional from the start.
+   Your goal is to **explore, observe, and understand** the routing and DNS behavior.
+
+
+📥 **Download the Base Lab**
++++++++++++++++++++++++++++++++++++++++++++++
+
+.. admonition:: primary
+   :title: Download the starting archive
+
+     To **begin the exercise**, you need to download the archive. It contains the configuration (without errors).
+
+    .. raw:: html
+
+        <script>
+          const NB_VARIANTS = 4;
+          const rand = input["@random"][0];
+          const index = Math.floor(rand * NB_VARIANTS);
+          const selected = `variant_${index}.zip`;
+          const url = "https://inginious.info.ucl.ac.be/course/tfe-vanhorenbeke/bgp-anycast/variations/" + selected;
+          document.write(`<a href="${url}">Download your lab (${selected})</a>`);
+        </script>
+
+
+🔍 What to Explore
+====================
+
+The lab is structured around three progressive investigations.
+
+**Step 1 : Find the anycast prefix**
+
+Before sending any DNS query, identify the anycast prefix advertised by both NS1 and NS2.
+
+
+
+Once you have found the prefix, use it as ``PREFIX`` in all commands below.
+
+**Step 2 : Observe BGP Anycast routing**
+
+Identify which DNS server the client reaches by default and understand why.
+
+The domain is ``lab.be``.
+Use ``traceroute6`` to confirm the physical path taken.
+
+**Step 3 : Compare DoT, DoH and standard DNS**
+
+Send the same query using each protocol and capture the traffic simultaneously.
+Open two terminals: one for ``tcpdump``, one for the query.
+
+.. admonition:: note
+
+   Pay attention to what a network observer can and cannot see in each capture.
+   This is the key operational difference between DoT and DoH from a firewall perspective.
+
+**Step 4 : Redirect traffic to the other server**
+
+The lab archive includes a helper script ``bgpRemovePrefix.sh`` to withdraw the anycast
+prefix from the currently active DNS server, forcing BGP to switch to the other one.
+Run it **inside the DNS server container** you want to withdraw from:
+
+.. code:: bash
+
+   # usage: ./bgpRemovePrefix.sh <as_number> <anycast_prefix>
+   # example:
+   ./bgpRemovePrefix.sh 100 PREFIX
+
+After running it, verify the switch and confirm the client now reaches the other server.
+
+
+Useful Commands
+=================
+
+.. code:: bash
+
+   # Inspect the routing table and find the anycast prefix
+   vtysh -c "show bgp ipv6 unicast"
+
+   # Check BGP session state
+   vtysh -c "show bgp neighbors"
+
+   # Confirm the path taken to the anycast address
+   traceroute6 PREFIX
+
+   # DNS
+   dig -6 lab.be @PREFIX
+
+   # Capture: content is fully readable
+   tcpdump -i eth0 -n port 53
+
+   # DNS over HTTPS — DoH (port 443)
+   dig -6 @PREFIX -p 443 +https lab.be
+
+   # Capture: encrypted, indistinguishable from normal HTTPS traffic
+   tcpdump -i eth0 -n port 443
+
+   # DNS over TLS — DoT (port 853)
+   dig -6 @PREFIX -p 853 +tls lab.be
+
+   # Capture: encrypted TLS stream, but port 853 is visible and identifiable
+   tcpdump -i eth0 -n port 853
+
+
+.. admonition:: primary
+   :title: 🔗 Useful Links
+
+   - **BGP Anycast explained**: https://www.noction.com/blog/bgp-anycast
+   - **RFC 7858 : DNS over TLS**: https://datatracker.ietf.org/doc/rfc7858/
+   - **RFC 8484 : DNS over HTTPS**: https://datatracker.ietf.org/doc/rfc8484/
+   - **FRRouting BGP**: https://docs.frrouting.org/en/latest/bgp.html
+   - **Kathara**: https://github.com/KatharaFramework/Kathara/wiki
