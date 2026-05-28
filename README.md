@@ -49,7 +49,7 @@ kathara-inginious-lab-framework/
         │   └── dynamic/       # Jinja2 templates
         ├── variation_model/   # Abstract lab model 
         ├── scripts/           # Generation scripts
-        ├── correction/        # Lab without errors, ready to start with tests
+        ├── correction/        # Lab without errors, ready to test with kathara_lab_checker
         └── build/             # Generated output (git-ignored)
 ```
 
@@ -81,9 +81,10 @@ kathara-inginious-lab-framework/
 | File | Purpose |
 |------|---------|
 | `base_topology.yaml` | Logical network structure (nodes, interfaces, routes) (IP-independent) |
-| `schemes.yaml` | IP addressing schemes |
+| `schemes.yaml` | IP addressing schemes (genereted automatically with `scripts/generate_schemes.py`) |
 | `protocols.yaml` | Protocol-specific parameters (BGP neighbors, OSPF areas, etc.) |
 | `errors.yaml` | Catalog of injectable errors |
+| `variants.yaml` | Variant combinations generated automatically with `scripts/gen_all_combination_variants_yaml.py` |
 
 **Example — `errors.yaml`:**
 ```yaml
@@ -94,6 +95,7 @@ errors:
     route_index: 0
     new_prefixlen: 30
 ```
+For more example see [apply_error()](https://github.com/NoahVanH/kathara-inginious-lab-framework/blob/7d9173523856450f1a7a17df6ea6aaa3c61be0b4/labs/0-base-project/scripts/build_variants.py#L329) function.
 
 ### 2. Write Jinja2 templates (`template/dynamic/`)
 
@@ -107,7 +109,7 @@ errors:
 ### 3. Generate variants
 
 ```bash
-python3 scripts/build_variants.py --min-errors 2 --max-errors 2
+python3 scripts/build_variants.py 
 ```
 
 
@@ -119,6 +121,7 @@ Each generated lab is designed to be deployed on [INGInious](https://inginious.i
 The `corrections_admin/` directory contains the per-variant test files to upload to the INGInious task.
 
 The grading pipeline is handled by the `run` script included in each INGInious task, which:
+
 1. Identifies the student's assigned variant
 2. Restores the original topology (anti-cheat)
 3. Runs `kathara-lab-checker` on the submitted archive
