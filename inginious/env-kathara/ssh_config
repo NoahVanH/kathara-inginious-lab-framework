@@ -1,0 +1,5 @@
+Host docker
+    HostName <IP_VM>
+    User root
+    IdentityFile /etc/ssh/ssh_client_ed25519_key
+    StrictHostKeyChecking no
