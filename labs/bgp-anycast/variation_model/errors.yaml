@@ -1,0 +1,52 @@
+errors:
+
+  # This is not an error, but required to generate files, see bellow for more details.
+  as100_wrong_domain:
+    kind: dns_wrong_domain
+    node: as100_ns1
+    new_domain: lab.be 
+    
+  # Example of BGP and DNS errors applied to the anycast lab. 
+  # Since here the goal is to show the difference of DNS (DoT and DoH)
+  # No errors are applied
+
+  # Uncomment the following errors to apply them to the variants. Make sure to update the variants.yaml file accordingly. 
+  # python3 gen_all_combinations.py --min-errors 3 --max-errors 3 
+  # as100_wrong_network_r1:
+  #   kind: bgp_replace_network_with_ref
+  #   node: as100_ns1
+  #   network_target:          
+  #     node: as100_ns1
+  #     interface: lo
+  #   network_from:            
+  #     node: as1_r1
+  #     interface: lo
+  #   new_prefixlen: 128
+
+  # as200_wrong_network_r2:
+  #   kind: bgp_replace_network_with_ref
+  #   node: as200_ns2
+  #   network_target:          
+  #     node: as200_ns2 
+  #     interface: lo
+  #   network_from:            
+  #     node: as2_r2
+  #     interface: lo
+  #   new_prefixlen: 128
+
+  # as200_wrong_nameserver:
+  #     kind: dns_wrong_nameserver
+  #     node: as200_ns2
+  #     new_nameserver: kathara
+
+  # as100_wrong_domain:
+  #   kind: dns_wrong_domain
+  #   node: as100_ns1
+  #   new_domain: google.com
+
+  # as200_wrong_bind_ip:
+  #   kind: dns_wrong_bind_ip
+  #   node: as200_ns2
+  #   bind_ip_from:
+  #     node: as2_r2
+  #     interface: lo

@@ -1,0 +1,13 @@
+variants:
+- id: 0
+  scheme: scheme_db8_a
+  errors: [as100_wrong_domain]
+- id: 1
+  scheme: scheme_db8_b
+  errors: [as100_wrong_domain]
+- id: 2
+  scheme: scheme_3fff_a
+  errors: [as100_wrong_domain]
+- id: 3
+  scheme: scheme_3fff_b
+  errors: [as100_wrong_domain]

@@ -1,0 +1,21 @@
+{% if node.dns %}
+$TTL 604800
+
+@ IN SOA {{ node.dns.nameserver }}.{{ node.dns.domain }}. admin.{{ node.dns.domain }}. (
+    2024101001 ; Serial
+    604800     ; Refresh
+    86400      ; Retry
+    2419200    ; Expire
+    604800     ; Negative Cache TTL
+)
+
+; Authoritative name servers
+@ IN NS {{ node.dns.nameserver }}.{{ node.dns.domain }}.
+
+
+; Records
+{% for record in node.dns.records %}
+{{ record.name }} IN {{ record.type }} {{ node.dns.bind_ip }}
+{% endfor %}
+
+{% endif %}

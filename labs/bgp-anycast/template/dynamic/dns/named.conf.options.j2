@@ -1,0 +1,44 @@
+{% if node.dns and node.dns.type == "dot" -%}
+tls local-tls {
+    key-file  "/etc/bind/tls/key.pem";
+    cert-file "/etc/bind/tls/cert.pem";
+};
+
+options {
+    directory "/var/cache/bind";
+    allow-query { any; };
+    recursion yes;
+    allow-recursion { any; };
+
+    listen-on port 53 { any; };
+    listen-on-v6 port 53 { any; };
+    listen-on port 853 tls local-tls { any; };
+    listen-on-v6 port 853 tls local-tls { any; };
+};
+
+{% elif node.dns and node.dns.type == "doh" -%}
+tls local-tls {
+    key-file  "/etc/bind/tls/key.pem";
+    cert-file "/etc/bind/tls/cert.pem";
+};
+
+options {
+    directory "/var/cache/bind";
+    allow-query { any; };
+    recursion yes;
+    allow-recursion { any; };
+
+    listen-on port 53 { any; };
+    listen-on-v6 port 53 { any; };
+    listen-on port 443 tls local-tls http default { any; };
+    listen-on-v6 port 443 tls local-tls http default { any; };
+};
+
+{% else -%}
+options {
+    directory "/var/cache/bind";
+    listen-on { any; };
+    listen-on-v6 { any; };
+    allow-query { any; };
+};
+{% endif %}

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+{% if node and node.interfaces is defined %}
+{% for iface, data in node.interfaces.items() -%}
+{% if iface != 'anycast' -%}
+ip link set dev {{ iface }}{% if data.up %} up{% else %} down{% endif %}
+ip -6 addr add {{ data.cidr }} dev {{ iface }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if node.default_route -%}
+ip -6 route add default via {{ node.default_route }}
+{% endif -%}
+
+{% for route in node.static_routes -%}
+ip -6 route add {{ route.to }} via {{ route.via }}
+{% endfor -%}
+
+
+{% if node.image == "kathara/frr:latest" -%}
+systemctl start frr
+{% elif node.image == "noahvanh1315/frr-bind9" -%}
+systemctl start frr
+
+{% if node.dns.type == "dot" or node.dns.type == "doh" -%}
+
+bash ./setupOpenSSL.sh {{node.dns.nameserver}}.{{ node.dns.domain }}
+systemctl start bind9
+{% endif %}
+
+
+{% endif %}
+

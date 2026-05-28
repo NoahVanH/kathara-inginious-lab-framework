@@ -1,0 +1,6 @@
+{% if node.dns %}
+zone "{{node.dns.domain}}" {
+type master;
+file "/etc/bind/zones/db.{{node.dns.domain}}";
+};
+{% endif %}
